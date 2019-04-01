@@ -3,9 +3,13 @@ module.exports = {
   env: {
     node: true
   },
+  'plugins': [
+    'es-beautifier'
+  ],
   'extends': [
     'plugin:vue/essential',
-    '@vue/standard'
+    'plugin:es-beautifier/standard',
+    'eslint:recommended'
   ],
   rules: {
     'no-console': process.env.NODE_ENV === 'production' ? 'error' : 'off',
