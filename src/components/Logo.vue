@@ -3,7 +3,7 @@
 </template>
 
 <script>
-import appLogo from '../assets/whiteLogo.png';
+import appLogo from '../assets/profile.png';
 
 export default {
   name: 'logo',
@@ -20,7 +20,8 @@ export default {
 
 <style scoped>
 .default {
-  height: 50px;
+  background-color: #e3f2fd;
+  border-radius: 50%;
 }
 </style>
 
