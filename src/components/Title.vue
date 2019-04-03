@@ -1,5 +1,5 @@
 <template>
-  <div :style="getWrapperStyle">
+  <div class="title" :style="getWrapperStyle">
     <h1 :style="getTitleStyle">{{ title }}</h1>
     <app-divider :customStyle="getDividerStyle" />
   </div>
@@ -40,6 +40,10 @@ export default {
 </script>
 
 <style scoped>
+.title {
+  background-color: inherit;
+}
+
 h1 {
   font-size: 3rem;
 }
