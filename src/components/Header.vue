@@ -1,5 +1,5 @@
 <template>
-  <header class="bg-info text-white text-center py-5" :style="customStyle">
+  <header class="header" :style="customStyle">
     <div class="container">
       <slot></slot>
     </div>
@@ -13,3 +13,14 @@ export default {
   }
 };
 </script>
+
+<style scoped>
+.header {
+  background-color: inherit;
+  padding-top: 3rem;
+  padding-bottom: 3rem;
+  color: #fff;
+  text-align: center;
+}
+</style>
+
