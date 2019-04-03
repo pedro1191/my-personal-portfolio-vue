@@ -13,5 +13,16 @@ export default new Router({
       name: 'home',
       component: Home
     }
-  ]
+  ],
+  scrollBehavior(to, from, savedPosition) {
+    if (savedPosition) {
+      return savedPosition;
+    }
+
+    if (to.hash && document.querySelector(to.hash)) {
+      return { selector: to.hash };
+    }
+
+    return { x: 0, y: 0 };
+  }
 })
