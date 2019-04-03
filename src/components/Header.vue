@@ -1,14 +1,15 @@
 <template>
-  <app-navbar />
+  <header class="bg-info text-white text-center py-5" :style="customStyle">
+    <div class="container">
+      <slot></slot>
+    </div>
+  </header>
 </template>
 
 <script>
-import Navbar from './Navbar.vue';
-
 export default {
-  name: 'header',
-  components: {
-    appNavbar: Navbar
+  props: {
+    customStyle: Object
   }
 };
 </script>
