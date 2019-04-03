@@ -1,7 +1,9 @@
 <template>
-  <section class="container section" :style="getWrapperStyle">
-    <app-title :title="title" :customStyle="getTitleStyle" v-if="title" />
-    <slot></slot>
+  <section class="section" :style="getWrapperStyle">
+    <div class="container">
+      <app-title :title="title" :customStyle="getTitleStyle" v-if="title" />
+      <slot></slot>
+    </div>
   </section>
 </template>
 
@@ -35,6 +37,10 @@ export default {
 .section {
   padding-top: 3rem;
   padding-bottom: 3rem;
+}
+
+.section div {
+  background-color: inherit;
 }
 </style>
 
