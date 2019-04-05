@@ -2953,12 +2953,12 @@ fieldset:disabled a.btn {
 
 .btn-link {
   font-weight: 400;
-  color: #007bff;
+  color: #17a2b8;
   text-decoration: none;
 }
 
 .btn-link:hover {
-  color: #0056b3;
+  color: #117a8b;
   text-decoration: underline;
 }
 
@@ -4223,12 +4223,12 @@ input[type="button"].btn-block {
 }
 
 .navbar-toggler {
-  padding: 0.25rem 0.75rem;
+  padding: 0.5rem;
   font-size: 1.25rem;
   line-height: 1;
-  background-color: transparent;
+  background-color: #17a2b8;
   border: 1px solid transparent;
-  border-radius: 0.25rem;
+  border-radius: 0;
 }
 
 .navbar-toggler:hover, .navbar-toggler:focus {
@@ -4529,12 +4529,12 @@ input[type="button"].btn-block {
 .navbar-dark .navbar-nav .active > .nav-link,
 .navbar-dark .navbar-nav .nav-link.show,
 .navbar-dark .navbar-nav .nav-link.active {
-  color: #fff;
-  background-color: #17a2b8;
+  color: #17a2b8;;
+  background-color: transparent;
 }
 
 .navbar-dark .navbar-toggler {
-  color: rgba(255, 255, 255, 0.5);
+  color: rgba(255, 255, 255, 1);
   border-color: rgba(255, 255, 255, 0.1);
 }
 
@@ -5861,8 +5861,8 @@ a.close.disabled {
   align-items: flex-start;
   -ms-flex-pack: justify;
   justify-content: space-between;
-  padding: 1rem 1rem;
-  border-bottom: 1px solid #dee2e6;
+  padding: 0.5rem;
+  border-bottom: none;
   border-top-left-radius: 0.3rem;
   border-top-right-radius: 0.3rem;
 }
@@ -5881,7 +5881,7 @@ a.close.disabled {
   position: relative;
   -ms-flex: 1 1 auto;
   flex: 1 1 auto;
-  padding: 1rem;
+  padding: 0.5rem;
 }
 
 .modal-footer {
@@ -5891,8 +5891,8 @@ a.close.disabled {
   align-items: center;
   -ms-flex-pack: end;
   justify-content: flex-end;
-  padding: 1rem;
-  border-top: 1px solid #dee2e6;
+  padding: 0.5rem;
+  border-top: none;
   border-bottom-right-radius: 0.3rem;
   border-bottom-left-radius: 0.3rem;
 }
