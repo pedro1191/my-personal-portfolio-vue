@@ -33,17 +33,17 @@ export default {
   display: block;
   position: relative;
   margin: 0 auto;
-  color: #fff;
   outline: none;
   border: none;
   padding: 0;
   border-width: 1rem;
   border-style: double;
   width: 100%;
+  height: 100%;
 }
 
 .portfolio-item img {
-  background-color: #fff;
+  background-color: transparent;
   margin: 0;
   padding: 0;
 }
