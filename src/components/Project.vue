@@ -1,8 +1,8 @@
 <template>
   <div class="col-md-6 col-lg-4 my-2">
-    <button class="portfolio-item" :style="{ borderColor: randomBackgroundColor }" @click="$emit('projectOpened', project.id)">
+    <button class="portfolio-item" :style="{ borderColor: randomBackgroundColor }" title="See Details" @click="$emit('projectOpened', project.id)">
       <div class="portfolio-item-caption">
-        <i class="fas fa-search-plus fa-3x"></i>
+        <i class="fas fa-search-plus fa-3x text-white"></i>
       </div>
       <img class="img-fluid" :src="project.image" :alt="project.name">
     </button>
