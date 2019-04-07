@@ -1,6 +1,6 @@
 <template>
   <form class="form" novalidate="novalidate">
-    <app-form-group v-for="(formGroup, index) in formGroups" :key="index" :formGroup="formGroup" @formSubmited="$emit('formSubmited')" />
+    <app-form-group v-for="(formGroup, key, index) in formGroups" :key="index" :formGroup="formGroup" :formGroupKey="key" @formSubmited="$emit('formSubmited')" @formGroupTouched="$emit('formGroupTouched', $event)" />
   </form>
 </template>
 
