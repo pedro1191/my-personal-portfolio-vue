@@ -3,7 +3,7 @@
     <div class="modal-mask">
       <div class="modal-wrapper">
         <div class="modal-container">
-          <div class="modal-content">
+          <div class="modal-content" :style="customContentStyle">
 
             <div class="modal-header">
               <slot name="header"></slot>
@@ -24,6 +24,14 @@
   </transition>
 </template>
 
+<script>
+export default {
+  props: {
+    customContentStyle: Object
+  }
+};
+</script>
+
 <style scoped>
 .modal-mask {
   position: fixed;
@@ -34,6 +42,8 @@
   height: 100%;
   background-color: rgba(0, 0, 0, 0.5);
   transition: opacity 0.3s ease;
+  padding: 0;
+  margin: 0;
 }
 
 .modal-wrapper {
@@ -44,6 +54,9 @@
   width: 100%;
   height: 100%;
   overflow: auto;
+  padding: 0;
+  margin: 0;
+  background-color: transparent;
 }
 
 .modal-container {
@@ -51,15 +64,9 @@
   align-items: center;
   justify-content: center;
   min-height: 100vh;
-}
-
-.modal-content {
   padding: 0;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.33);
-  transition: all 0.3s ease;
-  margin: 2.5%;
-  border-radius: 0;
-  width: auto;
+  margin: 0;
+  background-color: transparent;
 }
 
 .modal-header:empty,

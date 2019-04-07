@@ -5827,13 +5827,16 @@ a.close.disabled {
   display: flex;
   -ms-flex-direction: column;
   flex-direction: column;
-  width: 100%;
   pointer-events: auto;
-  background-color: #fff;
+  background-color: transparent;
   background-clip: padding-box;
-  border: 1px solid rgba(0, 0, 0, 0.2);
-  border-radius: 0.3rem;
+  border: none;
+  border-radius: 0;
   outline: 0;
+  padding: 0;
+  transition: all 0.3s ease;
+  margin: 2.5%;
+  width: auto;
 }
 
 .modal-backdrop {
@@ -5865,6 +5868,7 @@ a.close.disabled {
   border-bottom: none;
   border-top-left-radius: 0.3rem;
   border-top-right-radius: 0.3rem;
+  background-color: inherit;
 }
 
 .modal-header .close {
@@ -5882,6 +5886,7 @@ a.close.disabled {
   -ms-flex: 1 1 auto;
   flex: 1 1 auto;
   padding: 0.5rem;
+  background-color: inherit;
 }
 
 .modal-footer {
@@ -5895,6 +5900,7 @@ a.close.disabled {
   border-top: none;
   border-bottom-right-radius: 0.3rem;
   border-bottom-left-radius: 0.3rem;
+  background-color: inherit;
 }
 
 .modal-footer > :not(:first-child) {
