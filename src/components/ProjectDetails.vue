@@ -1,25 +1,18 @@
 <template>
-  <app-modal>
+  <app-modal :customContentStyle="{ backgroundColor: '#fff' }">
     <div class="close-button" slot="header">
       <button title="Close" @click="$emit('projectClosed')">
         <i class="fas fa-times fa-3x"></i>
       </button>
     </div>
-    <div slot="body">
-      <app-section class="bg-white" :title="project.name">
-        <img class="img-fluid" :src="project.image" :alt="project.name">
-        <div id="description" v-html="project.description"></div>
-        <div class="project-links">
-          <a class="btn btn-success" target="_blank" rel="noreferrer noopener" :href="project.links.liveDemo" v-if="project.links.liveDemo">Live Demo <i class="fas fa-eye"></i></a>
-          <a class="btn btn-secondary" target="_blank" rel="noreferrer noopener" :href="project.links.sourceCode">Source Code <i class="fas fa-code"></i></a>
-        </div>
-      </app-section>
-    </div>
-    <!-- <div slot="footer">
-      <button title="Close" class="btn btn-link btn-lg" @click="$emit('projectClosed')">
-        Close Details
-      </button>
-    </div> -->
+    <app-section class="no-padding-top" slot="body" :title="project.name">
+      <img class="img-fluid" :src="project.image" :alt="project.name">
+      <div id="description" v-html="project.description"></div>
+      <div class="project-links">
+        <a class="btn btn-success" target="_blank" rel="noreferrer noopener" :href="project.links.liveDemo" v-if="project.links.liveDemo">Live Demo <i class="fas fa-eye"></i></a>
+        <a class="btn btn-secondary" target="_blank" rel="noreferrer noopener" :href="project.links.sourceCode">Source Code <i class="fas fa-code"></i></a>
+      </div>
+    </app-section>
   </app-modal>
 </template>
 
@@ -65,9 +58,9 @@ export default {
 
 <style scoped>
 .close-button {
-  background-color: #fff;
   padding: 15px 15px 0 15px;
-  margin-left: auto;
+  width: 100%;
+  text-align: right;
 }
 
 .close-button button {
@@ -93,7 +86,7 @@ export default {
   cursor: pointer;
 }
 
-section.bg-white {
+.no-padding-top {
   padding-top: 0;
 }
 </style>
