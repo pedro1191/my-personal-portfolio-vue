@@ -37,6 +37,7 @@ export default {
 .section {
   padding-top: 3rem;
   padding-bottom: 3rem;
+  background-color: inherit;
 }
 
 .section div {
