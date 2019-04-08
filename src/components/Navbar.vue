@@ -86,7 +86,6 @@ export default {
       const timeInterval = 1; // in ms
       let prevScrollTop;
       const increment = to > from ? 20 : -20;
-      const vm = this;
 
       const scrollByPixel = setInterval(function() {
         const scrollTop = Math.round(body.scrollTop || html.scrollTop); // getting current scroll position
@@ -128,7 +127,6 @@ export default {
       const links = document.links;
       const html = document.documentElement;
       const body = document.body;
-      const vm = this;
 
       for (let i = 0; i < links.length; i++) {
         const href = links[i].getAttribute('href');
