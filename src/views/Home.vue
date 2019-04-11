@@ -8,16 +8,22 @@
     </app-header>
 
     <app-section id="portfolio" class="bg-white" title="PORTFOLIO">
+      <h5 class="font-weight-light">(Portfolio still in development)</h5>
       <app-portfolio :projects="projects" />
     </app-section>
 
     <app-section id="about" class="bg-info text-white" title="ABOUT">
       <div class="row">
         <div class="col-md-6">
-          <p class="lead">I'm a Full Stack Web Developer.</p>
+          <p class="lead">I am a Technologist in System Analysis and Development graduated in 2014 from Federal Technological University of Paraná.</p>
+          <p class="lead">I worked in a company until 2016, when I applied for a Master's Degree in Applied Computing.</p>
+          <p class="lead">In 2018, I obtained my Master's Degree in Applied Computing from State University of Ponta Grossa.</p>
+          <p class="lead">Currently I have more than three years of experience in system development and I work full time as a Full Stack Web Developer.</p>
         </div>
         <div class="col-md-6">
-          <p class="lead">Some other text.</p>
+          <p class="lead">Although I have already worked with several technologies for Front-End and Back-End development, nowadays I work with some specific tools.</p>
+          <p class="lead">For the Front-End development I work with Vue JS and React JS, currently also focusing on Progressive Web Applications.</p>
+          <p class="lead">For the Back-End development I have experience developing RESTful APIs, mainly with Laravel/Lumen framework in PHP programming language, and I work with relational database management systems, like PostgreSQL, SQL Server and MySQL.</p>
         </div>
       </div>
     </app-section>
@@ -60,66 +66,7 @@ export default {
           fontSize: '4rem'
         }
       },
-      projects: [
-        {
-          id: 1,
-          name: 'My Portfolio',
-          description:
-            'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Mollitia neque assumenda ipsam nihil, molestias magnam, recusandae quos quis inventore quisquam velit asperiores, vitae? Reprehenderit soluta, eos quod consequuntur itaque. Nam.',
-          image:
-            'https://blackrockdigital.github.io/startbootstrap-freelancer/img/portfolio/circus.png',
-          links: {
-            liveDemo: null,
-            sourceCode: null
-          }
-        },
-        {
-          id: 2,
-          name: 'My Portfolio Back End',
-          description:
-            '<p>"My Products" trata-se de um projeto front end desenvolvido utilizando o framework Vue JS. ' +
-            'Ele comunica-se com uma API RESTful desenvolvida em PHP utilizando o framework Laravel/Lumen. ' +
-            'O código fonte dessa API pode ser conferido <a href="" target="_blank" rel="noreferrer noopener">neste link</a>.</p>' +
-            '<button data-project-id="1")>Project 1</button>' +
-            '<p>Uma versão de demonstração, bem como o código fonte do projeto, podem ser acessados pelos botões abaixo.</p>.',
-          image: 'http://placehold.it/900x650?text=RESTful%20API',
-          links: {
-            liveDemo: null,
-            sourceCode: null
-          }
-        },
-        {
-          id: 3,
-          name: 'My Products',
-          description:
-            '<p>"My Products" trata-se de um projeto front end desenvolvido utilizando o framework Vue JS. ' +
-            'Ele comunica-se com uma API RESTful desenvolvida em PHP utilizando o framework Laravel/Lumen. ' +
-            'O código fonte dessa API pode ser conferido <a href="" target="_blank" rel="noreferrer noopener">neste link</a>.</p>' +
-            '<button data-project-id="1")>Project 1</button>' +
-            '<p>Uma versão de demonstração, bem como o código fonte do projeto, podem ser acessados pelos botões abaixo.</p>.',
-          image:
-            'https://blackrockdigital.github.io/startbootstrap-freelancer/img/portfolio/cabin.png',
-          links: {
-            liveDemo: null,
-            sourceCode: null
-          }
-        },
-        {
-          id: 4,
-          name: 'My Products Back End',
-          description:
-            '<p>"My Products" trata-se de um projeto front end desenvolvido utilizando o framework Vue JS. ' +
-            'Ele comunica-se com uma API RESTful desenvolvida em PHP utilizando o framework Laravel/Lumen. ' +
-            'O código fonte dessa API pode ser conferido <a href="" target="_blank" rel="noreferrer noopener">neste link</a>.</p>' +
-            '<button data-project-id="1")>Project 1</button>' +
-            '<p>Uma versão de demonstração, bem como o código fonte do projeto, podem ser acessados pelos botões abaixo.</p>.',
-          image: 'http://placehold.it/900x650?text=RESTful%20API',
-          links: {
-            liveDemo: null,
-            sourceCode: null
-          }
-        }
-      ],
+      projects: [],
       formGroups: {
         name: {
           label: 'Name',
@@ -156,6 +103,19 @@ export default {
         message: null
       }
     };
+  },
+  mounted() {
+    this.modal.loading = true;
+
+    axios
+      .get('/projects')
+      .then(response => {
+        this.modal.loading = false;
+        this.projects = response.data.data;
+      })
+      .catch(error => {
+        this.onHttpRequestError(error);
+      });
   },
   watch: {
     formName: function() {
@@ -316,10 +276,17 @@ export default {
 </script>
 
 <style scoped>
-section::before,
-header#home::before {
+section::before {
   height: 74px;
   content: '';
   display: block;
+}
+
+@media (min-width: 768px) {
+  header#home::before {
+    height: 74px;
+    content: '';
+    display: block;
+  }
 }
 </style>
