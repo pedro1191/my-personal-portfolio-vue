@@ -6,11 +6,11 @@
       </button>
     </div>
     <app-section class="no-padding-top" slot="body" :title="project.name">
-      <img class="img-fluid" :src="project.image" :alt="project.name">
+      <img class="img-fluid project-image" :src="project.image" :alt="project.name">
       <div id="description" v-html="project.description"></div>
       <div class="project-links">
-        <a class="btn btn-success" target="_blank" rel="noreferrer noopener" :href="project.links.liveDemo" v-if="project.links.liveDemo">Live Demo <i class="fas fa-eye"></i></a>
-        <a class="btn btn-secondary" target="_blank" rel="noreferrer noopener" :href="project.links.sourceCode">Source Code <i class="fas fa-code"></i></a>
+        <a class="btn btn-success" target="_blank" rel="noreferrer noopener" :href="project.live_demo_link" v-if="project.live_demo_link">Live Demo <i class="fas fa-eye"></i></a>
+        <a class="btn btn-secondary" target="_blank" rel="noreferrer noopener" :href="project.source_code_link">Source Code <i class="fas fa-code"></i></a>
       </div>
     </app-section>
   </app-modal>
@@ -88,6 +88,12 @@ export default {
 
 .no-padding-top {
   padding-top: 0;
+}
+
+.project-image {
+  border-width: 0.5rem;
+  border-style: double;
+  border-color: #17a2b8;
 }
 </style>
 
