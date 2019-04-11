@@ -36,7 +36,7 @@ export default {
   outline: none;
   border: none;
   padding: 0;
-  border-width: 1rem;
+  border-width: 0.5rem;
   border-style: double;
   width: 100%;
   height: 100%;
