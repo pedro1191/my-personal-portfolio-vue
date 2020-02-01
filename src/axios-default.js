@@ -1,7 +1,7 @@
 import axios from 'axios'
 
 const instance = axios.create({
-  baseURL: 'http://192.168.0.128:8091/api/v1'
+  baseURL: process.env.VUE_APP_DEFAULT_BACKEND_API_URL,
 })
 
 export default instance
