@@ -5,6 +5,11 @@
 npm install
 ```
 
+Create a **.env.development** file from **.env.example** file and set the environment variable values.
+```
+cp .env.example .env.development
+```
+
 ### Compiles and hot-reloads for development
 ```
 npm run serve
@@ -34,6 +39,3 @@ npm run test:e2e
 ```
 npm run test:unit
 ```
-
-### Customize configuration
-See [Configuration Reference](https://cli.vuejs.org/config/).
