@@ -8,22 +8,20 @@
     </app-header>
 
     <app-section id="portfolio" class="bg-white" title="PORTFOLIO">
-      <h5 class="font-weight-light">(Portfolio still in development)</h5>
+      <h5 class="font-weight-light">(The portfolio is still in development)</h5>
       <app-portfolio :projects="projects" />
     </app-section>
 
     <app-section id="about" class="bg-info text-white" title="ABOUT">
       <div class="row">
         <div class="col-md-6">
-          <p class="lead">I am a Technologist in System Analysis and Development graduated in 2014 from Federal Technological University of Paraná.</p>
-          <p class="lead">I worked in a company until 2016, when I applied for a Master's Degree in Applied Computing.</p>
-          <p class="lead">In 2018, I obtained my Master's Degree in Applied Computing from State University of Ponta Grossa.</p>
-          <p class="lead">Currently I have more than three years of experience in system development and I work full time as a Full Stack Web Developer.</p>
+          <p class="lead">I am a Technologist in System Analysis and Development who graduated in 2014 from the Federal University of Technology - Paraná.</p>
+          <p class="lead">I worked in a company as a Full Stack Developer until 2016, when I decided to apply for a Master's Degree in Applied Computing.</p>
+          <p class="lead">In 2018, I obtained my Master's Degree in Applied Computing from the State University of Ponta Grossa. Since then, I have been working full-time as a Full Stack Web Developer.</p>
         </div>
         <div class="col-md-6">
-          <p class="lead">Although I have already worked with several technologies for Front-End and Back-End development, nowadays I work with some specific tools.</p>
-          <p class="lead">For the Front-End development I work with Vue JS and React JS, currently also focusing on Progressive Web Applications.</p>
-          <p class="lead">For the Back-End development I have experience developing RESTful APIs, mainly with Laravel/Lumen framework in PHP programming language, and I work with relational database management systems, like PostgreSQL, SQL Server and MySQL.</p>
+          <p class="lead">Currently, I have more than five years of experience in system development. Although I have already worked with several Front-End and Back-End development technologies, my most considerable experience is with some specific tools.</p>
+          <p class="lead">I use Vue JS and React JS for the Front-End development, focusing on Progressive Web Applications. And I have experience creating RESTful and GraphQL APIs for Back-End development, mainly with Laravel/Lumen framework in PHP programming language. I also work with relational database management systems, like PostgreSQL, MySQL, and SQLServer.</p>
         </div>
       </div>
     </app-section>
