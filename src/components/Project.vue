@@ -1,30 +1,36 @@
 <template>
   <div class="col-md-6 col-lg-4 my-2">
-    <button class="portfolio-item" :style="{ borderColor: randomBackgroundColor }" title="See Details" @click="$emit('projectOpened', project.id)">
+    <button
+      class="portfolio-item"
+      :style="{ borderColor: randomBackgroundColor }"
+      title="See Details"
+      @click="$emit('projectOpened', project.id)"
+    >
       <div class="portfolio-item-caption">
         <i class="fas fa-search-plus fa-3x text-white"></i>
       </div>
-      <img class="img-fluid" :src="project.image" :alt="project.name">
+      <img class="img-fluid" :src="project.image" :alt="project.name" />
     </button>
   </div>
 </template>
 
 <script>
 export default {
+  name: 'AppProject',
   props: {
     project: {
       type: Object,
-      required: true
-    }
+      required: true,
+    },
   },
   computed: {
-    randomBackgroundColor: function() {
+    randomBackgroundColor: function () {
       const min = Math.ceil(100000);
       const max = Math.floor(999999);
       const hexColor = `#${Math.floor(Math.random() * (max - min)) + min}`;
       return hexColor;
-    }
-  }
+    },
+  },
 };
 </script>
 
@@ -69,5 +75,3 @@ export default {
   display: flex;
 }
 </style>
-
-

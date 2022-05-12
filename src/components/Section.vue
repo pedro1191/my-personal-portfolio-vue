@@ -1,7 +1,7 @@
 <template>
   <section class="section" :style="getWrapperStyle">
     <div class="container">
-      <app-title :title="title" :customStyle="getTitleStyle" v-if="title" />
+      <Title :title="title" :customStyle="getTitleStyle" v-if="title" />
       <slot></slot>
     </div>
   </section>
@@ -11,12 +11,13 @@
 import Title from './Title.vue';
 
 export default {
+  name: 'AppSection',
+  components: {
+    Title,
+  },
   props: {
     title: String,
-    customStyle: Object
-  },
-  components: {
-    appTitle: Title
+    customStyle: Object,
   },
   computed: {
     getWrapperStyle() {
@@ -28,8 +29,8 @@ export default {
       return this.customStyle && this.customStyle.title
         ? this.customStyle.title
         : {};
-    }
-  }
+    },
+  },
 };
 </script>
 
@@ -44,4 +45,3 @@ export default {
   background-color: inherit;
 }
 </style>
-

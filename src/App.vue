@@ -1,6 +1,6 @@
 <template>
   <div id="app" class="h-100">
-    <app-global-layout />
+    <GlobalLayout />
   </div>
 </template>
 
@@ -9,8 +9,8 @@ import GlobalLayout from './views/GlobalLayout.vue';
 
 export default {
   components: {
-    appGlobalLayout: GlobalLayout
-  }
+    GlobalLayout,
+  },
 };
 </script>
 

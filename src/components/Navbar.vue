@@ -1,15 +1,36 @@
 <template>
-  <nav class="navbar navbar-expand-md fixed-top navbar-dark bg-dark" :class="{ 'navbar-shrink': !scrollOnTop }">
+  <nav
+    class="navbar navbar-expand-md fixed-top navbar-dark bg-dark"
+    :class="{ 'navbar-shrink': !scrollOnTop }"
+  >
     <div class="container">
       <a class="navbar-brand" title="Home" href="#home">
-        <app-logo class="app-logo" />
+        <Logo class="app-logo" />
       </a>
-      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-label="Toggle navigation" :aria-expanded="openMenu" :class="{ collapsed: !openMenu }" @click="onNavbarTogglerClick">
+      <button
+        class="navbar-toggler"
+        type="button"
+        data-toggle="collapse"
+        data-target="#navbarNavDropdown"
+        aria-controls="navbarNavDropdown"
+        aria-label="Toggle navigation"
+        :aria-expanded="openMenu"
+        :class="{ collapsed: !openMenu }"
+        @click="onNavbarTogglerClick"
+      >
         {{ togglerTitle }}<i class="fas fa-bars ml-2"></i>
       </button>
-      <div class="collapse navbar-collapse" id="navbarNavDropdown" :class="{ show: openMenu }">
+      <div
+        class="collapse navbar-collapse"
+        id="navbarNavDropdown"
+        :class="{ show: openMenu }"
+      >
         <ul class="navbar-nav ml-auto">
-          <li v-for="(navLink, index) in navLinks" :key="index" class="nav-item">
+          <li
+            v-for="(navLink, index) in navLinks"
+            :key="index"
+            class="nav-item"
+          >
             <a :href="navLink.link.hash" class="nav-link">{{ navLink.name }}</a>
           </li>
         </ul>
@@ -22,33 +43,47 @@
 import Logo from './Logo.vue';
 
 export default {
+  name: 'AppNavbar',
+  components: {
+    Logo,
+  },
   props: {
     togglerTitle: {
       type: String,
-      default: 'Menu'
+      default: 'Menu',
     },
     navLinks: {
       type: Array,
-      required: true
-    }
+      required: true,
+    },
   },
   data() {
     return {
       scrollYPosition: null,
       openMenu: false,
-      hashLinks: []
+      hashLinks: [],
     };
   },
   computed: {
-    scrollOnTop: function() {
+    scrollOnTop: function () {
       return this.scrollYPosition <= 100;
     },
-    viewportOffset: function() {
+    viewportOffset: function () {
       return 200;
-    }
+    },
   },
-  components: {
-    appLogo: Logo
+  watch: {
+    $route() {
+      this.openMenu = false;
+    },
+  },
+  mounted() {
+    window.addEventListener('scroll', () => {
+      this.updateScroll();
+      this.updateNavLinkClass();
+    });
+
+    this.addSmoothScrollOnAnchorClick();
   },
   methods: {
     updateScroll() {
@@ -87,7 +122,7 @@ export default {
       let prevScrollTop;
       const increment = to > from ? 20 : -20;
 
-      const scrollByPixel = setInterval(function() {
+      const scrollByPixel = setInterval(function () {
         const scrollTop = Math.round(body.scrollTop || html.scrollTop); // getting current scroll position
 
         if (
@@ -135,25 +170,12 @@ export default {
 
         if (hashElement) {
           this.hashLinks.push(id);
-          links[i].onclick = event =>
+          links[i].onclick = (event) =>
             this.onAnchorClick(event, html, body, href, hashElement);
         }
       }
-    }
+    },
   },
-  mounted() {
-    window.addEventListener('scroll', () => {
-      this.updateScroll();
-      this.updateNavLinkClass();
-    });
-
-    this.addSmoothScrollOnAnchorClick();
-  },
-  watch: {
-    $route() {
-      this.openMenu = false;
-    }
-  }
 };
 </script>
 

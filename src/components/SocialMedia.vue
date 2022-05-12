@@ -1,6 +1,13 @@
 <template>
   <div class="social-media">
-    <a v-for="(sm, index) in socialMedia" :key="index" :href="sm.link" :class="sm.anchorClasses" target="_blank" rel="noreferrer noopener">
+    <a
+      v-for="(sm, index) in socialMedia"
+      :key="index"
+      :href="sm.link"
+      :class="sm.anchorClasses"
+      target="_blank"
+      rel="noreferrer noopener"
+    >
       <i :class="sm.iconClasses" :title="sm.name"></i>
     </a>
   </div>
@@ -11,12 +18,11 @@ export default {
   props: {
     socialMedia: {
       type: Array,
-      required: true
-    }
-  }
+      required: true,
+    },
+  },
 };
 </script>
-
 
 <style scoped>
 .social-media {

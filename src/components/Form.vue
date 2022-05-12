@@ -1,6 +1,13 @@
 <template>
   <form class="form" novalidate="novalidate">
-    <app-form-group v-for="(formGroup, key, index) in formGroups" :key="index" :formGroup="formGroup" :formGroupKey="key" @formSubmited="$emit('formSubmited')" @formGroupTouched="$emit('formGroupTouched', $event)" />
+    <FormGroup
+      v-for="(formGroup, key, index) in formGroups"
+      :key="index"
+      :formGroup="formGroup"
+      :formGroupKey="key"
+      @formSubmited="$emit('formSubmited')"
+      @formGroupTouched="$emit('formGroupTouched', $event)"
+    />
   </form>
 </template>
 
@@ -8,15 +15,16 @@
 import FormGroup from './FormGroup.vue';
 
 export default {
+  name: 'AppForm',
+  components: {
+    FormGroup,
+  },
   props: {
     formGroups: {
       type: Object,
-      required: true
-    }
+      required: true,
+    },
   },
-  components: {
-    appFormGroup: FormGroup
-  }
 };
 </script>
 
@@ -25,4 +33,3 @@ export default {
   text-align: left;
 }
 </style>
-

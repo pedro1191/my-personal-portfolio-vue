@@ -1,7 +1,16 @@
 <template>
   <div class="row">
-    <app-project v-for="(project, index) in projects" :key="index" :project="project" @projectOpened="onOpenProject($event)" />
-    <app-project-details :project="selectedProject" v-if="openProjectDetails" @projectClosed="onProjectClose" @projectChanged="setSelectedProject($event)" />
+    <Project
+      v-for="(project, index) in projects"
+      :key="index"
+      :project="project"
+      @projectOpened="onOpenProject($event)"
+    />
+    <ProjectDetails
+      :project="selectedProject"
+      v-if="openProjectDetails"
+      @projectClosed="onProjectClose"
+    />
   </div>
 </template>
 
@@ -10,21 +19,22 @@ import Project from './Project.vue';
 import ProjectDetails from './ProjectDetails.vue';
 
 export default {
+  name: 'AppPortfolio',
+  components: {
+    Project,
+    ProjectDetails,
+  },
   props: {
     projects: {
       type: Array,
-      required: true
-    }
+      required: true,
+    },
   },
   data() {
     return {
       openProjectDetails: false,
-      selectedProject: null
+      selectedProject: null,
     };
-  },
-  components: {
-    appProject: Project,
-    appProjectDetails: ProjectDetails
   },
   methods: {
     onOpenProject(id) {
@@ -37,11 +47,8 @@ export default {
       this.openProjectDetails = false;
     },
     setSelectedProject(id) {
-      this.selectedProject = this.projects.filter(project => {
-        return project.id == id;
-      })[0];
-    }
-  }
+      this.selectedProject = this.projects.find((project) => project.id === id);
+    },
+  },
 };
 </script>
-
