@@ -9,11 +9,12 @@
 
 <script>
 export default {
+  name: 'AppFooter',
   computed: {
     thisYear() {
       return new Date().getFullYear();
-    }
-  }
+    },
+  },
 };
 </script>
 
@@ -22,4 +23,3 @@ export default {
   background-color: #1a252f;
 }
 </style>
-

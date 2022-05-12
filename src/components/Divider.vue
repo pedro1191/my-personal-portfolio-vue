@@ -1,12 +1,13 @@
 <template>
-  <hr class="icon star-of-life" :style="customStyle">
+  <hr class="icon star-of-life" :style="customStyle" />
 </template>
 
 <script>
 export default {
+  name: 'AppDivider',
   props: {
-    customStyle: Object
-  }
+    customStyle: Object,
+  },
 };
 </script>
 

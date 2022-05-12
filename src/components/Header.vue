@@ -8,9 +8,10 @@
 
 <script>
 export default {
+  name: 'AppHeader',
   props: {
-    customStyle: Object
-  }
+    customStyle: Object,
+  },
 };
 </script>
 
@@ -23,4 +24,3 @@ export default {
   text-align: center;
 }
 </style>
-

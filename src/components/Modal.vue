@@ -1,10 +1,9 @@
 <template>
   <transition name="modal">
-    <div class="modal-mask">
+    <div class="modal-mask" @click="emitMaskClickEvent">
       <div class="modal-wrapper">
-        <div class="modal-container">
+        <div id="modal-container" class="modal-container">
           <div class="modal-content" :style="customContentStyle">
-
             <div class="modal-header">
               <slot name="header"></slot>
             </div>
@@ -16,7 +15,6 @@
             <div class="modal-footer">
               <slot name="footer"></slot>
             </div>
-
           </div>
         </div>
       </div>
@@ -26,9 +24,17 @@
 
 <script>
 export default {
+  name: 'AppModal',
   props: {
-    customContentStyle: Object
-  }
+    customContentStyle: Object,
+  },
+  methods: {
+    emitMaskClickEvent(event) {
+      if (event.target.id === 'modal-container') {
+        this.$emit('maskClick');
+      }
+    },
+  },
 };
 </script>
 
@@ -60,6 +66,7 @@ export default {
 }
 
 .modal-container {
+  z-index: 9999;
   display: flex;
   align-items: center;
   justify-content: center;

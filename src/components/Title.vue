@@ -1,7 +1,7 @@
 <template>
   <div class="title" :style="getWrapperStyle">
     <h1 :style="getTitleStyle">{{ title }}</h1>
-    <app-divider :customStyle="getDividerStyle" />
+    <Divider :customStyle="getDividerStyle" />
   </div>
 </template>
 
@@ -9,12 +9,16 @@
 import Divider from './Divider.vue';
 
 export default {
+  name: 'AppTitle',
+  components: {
+    Divider,
+  },
   props: {
     title: {
       type: String,
-      required: true
+      required: true,
     },
-    customStyle: Object
+    customStyle: Object,
   },
   computed: {
     getWrapperStyle() {
@@ -31,11 +35,8 @@ export default {
       return this.customStyle && this.customStyle.divider
         ? this.customStyle.divider
         : {};
-    }
+    },
   },
-  components: {
-    appDivider: Divider
-  }
 };
 </script>
 
@@ -48,5 +49,3 @@ h1 {
   font-size: 3rem;
 }
 </style>
-
-

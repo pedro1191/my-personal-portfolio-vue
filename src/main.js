@@ -1,19 +1,14 @@
-import Vue from 'vue'
-import Vuelidate from 'vuelidate'
-import App from './App.vue'
-import router from './router'
-import store from './store'
-import './registerServiceWorker'
-import VueGtag from 'vue-gtag'
+import { createApp } from 'vue';
+import App from './App.vue';
+import './registerServiceWorker';
+import router from './router';
+import store from './store';
+import VueGtag from 'vue-gtag';
 
-Vue.config.productionTip = false
-Vue.use(Vuelidate)
-Vue.use(VueGtag, {
-  config: { id: 'G-624GF25M5K' }
-}, router)
-
-new Vue({
-  router,
-  store,
-  render: h => h(App)
-}).$mount('#app')
+createApp(App)
+  .use(store)
+  .use(router)
+  .use(VueGtag, {
+    config: { id: 'G-624GF25M5K' },
+  })
+  .mount('#app');

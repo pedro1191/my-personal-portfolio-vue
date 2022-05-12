@@ -1,6 +1,6 @@
 <template>
   <div id="app" class="h-100">
-    <app-global-layout />
+    <GlobalLayout />
   </div>
 </template>
 
@@ -9,14 +9,14 @@ import GlobalLayout from './views/GlobalLayout.vue';
 
 export default {
   components: {
-    appGlobalLayout: GlobalLayout
-  }
+    GlobalLayout,
+  },
 };
 </script>
 
 <style>
 #app {
-  font-family: 'Avenir', Helvetica, Arial, sans-serif;
+  font-family: Avenir, Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   text-align: center;

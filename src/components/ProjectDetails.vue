@@ -1,19 +1,45 @@
 <template>
-  <app-modal :customContentStyle="{ backgroundColor: '#fff' }">
-    <div class="close-button" slot="header">
-      <button title="Close" @click="$emit('projectClosed')">
-        <i class="fas fa-times fa-3x"></i>
-      </button>
-    </div>
-    <app-section class="no-padding-top" slot="body" :title="project.name">
-      <div class="project-links">
-        <a class="btn btn-success" target="_blank" rel="noreferrer noopener" :href="project.live_demo_link" v-if="project.live_demo_link">Live Demo <i class="fas fa-eye"></i></a>
-        <a class="btn btn-secondary" target="_blank" rel="noreferrer noopener" :href="project.source_code_link">Source Code <i class="fas fa-code"></i></a>
+  <Modal
+    :customContentStyle="{ backgroundColor: '#fff' }"
+    @maskClick="$emit('projectClosed')"
+  >
+    <template v-slot:header>
+      <div class="close-button">
+        <button title="Close" @click="$emit('projectClosed')">
+          <i class="fas fa-times fa-3x"></i>
+        </button>
       </div>
-      <img class="img-fluid project-image" :src="project.image" :alt="project.name">
-      <div id="description" v-html="project.description"></div>
-    </app-section>
-  </app-modal>
+    </template>
+    <template v-slot:body>
+      <Section class="no-padding-top" :title="project.name">
+        <div class="project-links">
+          <a
+            class="btn btn-success"
+            target="_blank"
+            rel="noreferrer noopener"
+            :href="project.live_demo_link"
+            v-if="project.live_demo_link"
+          >
+            Live Demo <i class="fas fa-eye"></i>
+          </a>
+          <a
+            class="btn btn-secondary"
+            target="_blank"
+            rel="noreferrer noopener"
+            :href="project.source_code_link"
+          >
+            Source Code <i class="fas fa-code"></i>
+          </a>
+        </div>
+        <div id="description" v-html="project.description"></div>
+        <img
+          class="img-fluid project-image"
+          :src="project.image"
+          :alt="project.name"
+        />
+      </Section>
+    </template>
+  </Modal>
 </template>
 
 <script>
@@ -21,38 +47,17 @@ import Modal from './Modal.vue';
 import Section from './Section.vue';
 
 export default {
+  name: 'AppProjectDetails',
+  components: {
+    Modal,
+    Section,
+  },
   props: {
     project: {
       type: Object,
-      required: true
-    }
-  },
-  components: {
-    appModal: Modal,
-    appSection: Section
-  },
-  mounted() {
-    const buttons = this.getButtonsFromDescription();
-    this.addClickEventListeners(buttons);
-  },
-  methods: {
-    getButtonsFromDescription() {
-      return document
-        .getElementById('description')
-        .getElementsByTagName('button');
+      required: true,
     },
-    addClickEventListeners(buttons) {
-      const vm = this;
-
-      for (let i = 0; i < buttons.length; i++) {
-        buttons[i].addEventListener('click', function(event) {
-          event.preventDefault();
-          const id = event.target.getAttribute('data-project-id');
-          vm.$emit('projectChanged', id);
-        });
-      }
-    }
-  }
+  },
 };
 </script>
 
@@ -96,5 +101,3 @@ export default {
   border-color: #17a2b8;
 }
 </style>
-
-

@@ -1,20 +1,20 @@
 <template>
-  <img alt="logo" :src="appLogo" class="default" :style="customStyle">
+  <img alt="logo" :src="appLogo" class="default" :style="customStyle" />
 </template>
 
 <script>
 import appLogo from '../assets/profile.png';
 
 export default {
-  name: 'logo',
+  name: 'AppLogo',
+  props: {
+    customStyle: Object,
+  },
   data() {
     return {
-      appLogo
+      appLogo,
     };
   },
-  props: {
-    customStyle: Object
-  }
 };
 </script>
 
@@ -24,4 +24,3 @@ export default {
   border-radius: 50%;
 }
 </style>
-

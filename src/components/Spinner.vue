@@ -5,6 +5,12 @@
   </div>
 </template>
 
+<script>
+export default {
+  name: 'AppSpinner',
+};
+</script>
+
 <style scoped>
 .loader {
   color: #fff;
