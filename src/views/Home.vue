@@ -227,16 +227,17 @@ export default {
     onHttpRequestError(error) {
       this.modal.loading = false;
       this.modal.error = true;
-      const errors = error.response.data.errors;
 
       switch (error.response.status) {
-        case 422:
+        case 422: {
+          const errors = error.response.data.errors;
           this.modal.message = error.response.data.message;
 
           for (let key in errors) {
             this.formGroups[key].validationMessage = errors[key].join(' ');
           }
           break;
+        }
         default:
           this.modal.message = 'Oops! Something went wrong.';
       }
