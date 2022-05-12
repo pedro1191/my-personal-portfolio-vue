@@ -4,9 +4,9 @@
     :class="{ 'navbar-shrink': !scrollOnTop }"
   >
     <div class="container">
-      <a class="navbar-brand" title="Home" href="#home">
+      <router-link class="navbar-brand" title="Home" :to="{ name: 'home' }">
         <Logo class="app-logo" />
-      </a>
+      </router-link>
       <button
         class="navbar-toggler"
         type="button"
@@ -31,7 +31,12 @@
             :key="index"
             class="nav-item"
           >
-            <a :href="navLink.link.hash" class="nav-link">{{ navLink.name }}</a>
+            <router-link
+              class="nav-link"
+              :to="{ name: 'home', hash: navLink.link.hash }"
+            >
+              {{ navLink.name }}
+            </router-link>
           </li>
         </ul>
       </div>
@@ -61,7 +66,7 @@ export default {
     return {
       scrollYPosition: null,
       openMenu: false,
-      hashLinks: [],
+      scrollTimeout: null,
     };
   },
   computed: {
@@ -80,27 +85,26 @@ export default {
   mounted() {
     window.addEventListener('scroll', () => {
       this.updateScroll();
-      this.updateNavLinkClass();
+      clearTimeout(this.scrollTimeout);
+      this.scrollTimeout = setTimeout(() => this.updateNavLinkClass(), 125);
     });
-
-    this.addSmoothScrollOnAnchorClick();
   },
   methods: {
     updateScroll() {
       this.scrollYPosition = window.scrollY;
     },
     updateNavLinkClass() {
-      for (let i = 0; i < this.hashLinks.length; i++) {
+      this.navLinks.forEach((navLink) => {
         const element = document.querySelector(
-          `[ href="#${this.hashLinks[i]}" ]`
+          `[ href*="${navLink.link.hash}" ]`
         );
 
-        if (this.isInViewport(this.hashLinks[i])) {
+        if (this.isInViewport(navLink.reference_id)) {
           element.parentElement.classList.add('active');
         } else {
           element.parentElement.classList.remove('active');
         }
-      }
+      });
     },
     onNavbarTogglerClick() {
       this.openMenu = !this.openMenu;
@@ -116,64 +120,6 @@ export default {
         bounding.right <=
           (window.innerWidth || document.documentElement.clientWidth)
       );
-    },
-    scroll(from, to, hash, html, body) {
-      const timeInterval = 1; // in ms
-      let prevScrollTop;
-      const increment = to > from ? 20 : -20;
-
-      const scrollByPixel = setInterval(function () {
-        const scrollTop = Math.round(body.scrollTop || html.scrollTop); // getting current scroll position
-
-        if (
-          prevScrollTop == scrollTop ||
-          (to > from && scrollTop >= to) ||
-          (to < from && scrollTop <= to)
-        ) {
-          clearInterval(scrollByPixel);
-
-          window.location.hash = hash; // Add hash to the url after scrolling
-        } else {
-          body.scrollTop += increment;
-          html.scrollTop += increment;
-
-          prevScrollTop = scrollTop;
-        }
-      }, timeInterval);
-    },
-    onAnchorClick(event, html, body, hash, hashElement) {
-      const scrollTop = Math.round(body.scrollTop || html.scrollTop); // getting current scroll position
-
-      event.preventDefault(); // preventing default anchor click behavior
-
-      let hashElementTop = 0;
-      let obj = hashElement;
-
-      while (obj.offsetParent) {
-        hashElementTop += obj.offsetTop;
-        obj = obj.offsetParent;
-      }
-
-      hashElementTop = Math.round(hashElementTop); // getting element's position
-
-      this.scroll(scrollTop, hashElementTop, hash, html, body);
-    },
-    addSmoothScrollOnAnchorClick() {
-      const links = document.links;
-      const html = document.documentElement;
-      const body = document.body;
-
-      for (let i = 0; i < links.length; i++) {
-        const href = links[i].getAttribute('href');
-        const id = href.substring(1);
-        const hashElement = document.getElementById(id);
-
-        if (hashElement) {
-          this.hashLinks.push(id);
-          links[i].onclick = (event) =>
-            this.onAnchorClick(event, html, body, href, hashElement);
-        }
-      }
     },
   },
 };

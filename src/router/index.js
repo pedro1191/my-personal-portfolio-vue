@@ -17,11 +17,18 @@ const router = createRouter({
       return savedPosition;
     }
 
-    if (to.hash && document.querySelector(to.hash)) {
-      return { selector: to.hash };
+    if (to.hash) {
+      return {
+        el: to.hash,
+        behavior: 'smooth',
+      };
     }
 
-    return { x: 0, y: 0 };
+    return {
+      top: 0,
+      left: 0,
+      behavior: 'smooth',
+    };
   },
 });
 
