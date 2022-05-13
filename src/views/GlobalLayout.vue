@@ -36,9 +36,21 @@ export default {
   data() {
     return {
       navLinks: [
-        { name: 'PORTFOLIO', link: { name: 'home', hash: '#portfolio' } },
-        { name: 'ABOUT', link: { name: 'home', hash: '#about' } },
-        { name: 'CONTACT', link: { name: 'home', hash: '#contact' } },
+        {
+          reference_id: 'portfolio',
+          name: 'PORTFOLIO',
+          link: { name: 'home', hash: '#portfolio' },
+        },
+        {
+          reference_id: 'about',
+          name: 'ABOUT',
+          link: { name: 'home', hash: '#about' },
+        },
+        {
+          reference_id: 'contact',
+          name: 'CONTACT',
+          link: { name: 'home', hash: '#contact' },
+        },
       ],
       socialMedia: [
         {
