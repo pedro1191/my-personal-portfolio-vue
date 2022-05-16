@@ -1,14 +1,31 @@
-# my-personal-portfolio
+# Pedro de Almeida's Portfolio
+
+Hello and welcome to my portfolio!
+
+This is a Progressive Web Application built using [Vue.js](https://vuejs.org/). It consumes a [REST API](https://github.com/pedro1191/my-personal-portfolio-rest) to load the portfolio's projects and send contact messages.
+
+The following technologies are being used:
+- [axios](https://github.com/axios/axios): to consume the [REST API](https://github.com/pedro1191/my-personal-portfolio-rest)
+- [bootstrap](https://getbootstrap.com/)
+- [font awesome](https://fontawesome.com/)
+- [vue-gtag](https://github.com/MatteoGabriele/vue-gtag): to send event data to Google Analytics
+- [vuelidate](https://github.com/vuelidate/vuelidate): to validate the contact form
+
+Please visit [https://pedrohsalmeida.com/](https://pedrohsalmeida.com/) for a live demo.
+
 
 ## Project setup
 ```
 npm install
 ```
 
-Create a **.env.development** file from **.env.example** file and set the environment variable values.
+### Create a **.env.development.local** file from **.env.example** and set the environment variable values
 ```
-cp .env.example .env.development
+cp .env.example .env.development.local
 ```
+
+- **PORT**: optional. The port in which the application should run
+- **VUE_APP_DEFAULT_BACKEND_API_URL**: mandatory. It should point to a running instance of the [REST API](https://github.com/pedro1191/my-personal-portfolio-rest) it consumes
 
 ### Compiles and hot-reloads for development
 ```
@@ -34,6 +51,3 @@ npm run test:e2e
 ```
 npm run lint
 ```
-
-### Customize configuration
-See [Configuration Reference](https://cli.vuejs.org/config/).
