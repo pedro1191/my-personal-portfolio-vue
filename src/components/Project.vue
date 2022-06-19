@@ -15,6 +15,8 @@
 </template>
 
 <script>
+import { getRandomBackgroundColor } from '@/helpers';
+
 export default {
   name: 'AppProject',
   props: {
@@ -25,10 +27,7 @@ export default {
   },
   computed: {
     randomBackgroundColor: function () {
-      const min = Math.ceil(100000);
-      const max = Math.floor(999999);
-      const hexColor = `#${Math.floor(Math.random() * (max - min)) + min}`;
-      return hexColor;
+      return getRandomBackgroundColor();
     },
   },
 };
