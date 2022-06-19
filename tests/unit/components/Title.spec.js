@@ -7,6 +7,9 @@ describe('Title.vue', () => {
     // ARRANGE
     const title = faker.lorem.words();
     const wrapper = mount(Title, {
+      global: {
+        stubs: ['FontAwesomeIcon'],
+      },
       props: { title },
     });
 
@@ -33,6 +36,9 @@ describe('Title.vue', () => {
       },
     };
     const wrapper = mount(Title, {
+      global: {
+        stubs: ['FontAwesomeIcon'],
+      },
       props: {
         title,
         customStyle,

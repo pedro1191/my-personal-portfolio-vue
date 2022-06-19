@@ -10,6 +10,9 @@ describe('Divider.vue', () => {
       color: faker.color.rgb(colorFormat),
     };
     const wrapper = mount(Divider, {
+      global: {
+        stubs: ['FontAwesomeIcon'],
+      },
       props: { customStyle },
     });
 
