@@ -1,5 +1,5 @@
 <template>
-  <hr class="icon star-of-life" :style="customStyle" />
+  <hr class="icon star-of-life" :style="customStyle" data-test="divider" />
 </template>
 
 <script>
