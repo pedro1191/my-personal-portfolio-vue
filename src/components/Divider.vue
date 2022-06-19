@@ -1,5 +1,8 @@
 <template>
-  <hr class="icon star-of-life" :style="customStyle" data-test="divider" />
+  <div class="divider" :style="customStyle" data-test="divider">
+    <hr />
+    <font-awesome-icon class="icon" icon="fa-star-of-life" size="2x" />
+  </div>
 </template>
 
 <script>
@@ -18,26 +21,23 @@ hr {
   border-top: solid 0.25rem;
   background-color: inherit;
   padding: 0;
-  margin: 2rem auto;
+  margin: 0 auto;
   color: inherit;
 }
 
-.icon::before {
-  display: inline-block;
-  font-style: normal;
-  font-variant: normal;
-  text-rendering: auto;
-  -webkit-font-smoothing: antialiased;
+.icon {
+  position: absolute;
+  top: 25%;
+  left: 0;
+  right: 0;
+  padding: 0 0.25em;
+  margin: 0 auto;
   background-color: inherit;
 }
 
-.star-of-life::before {
-  font-family: 'Font Awesome 5 Free';
-  font-weight: 900;
-  content: '\f621';
+.divider {
+  padding: 2rem 0;
+  background-color: inherit;
   position: relative;
-  top: -1.6rem;
-  font-size: 2rem;
-  padding: 0 0.25em;
 }
 </style>

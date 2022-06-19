@@ -7,7 +7,7 @@
       @click="$emit('projectOpened', project.id)"
     >
       <div class="portfolio-item-caption">
-        <i class="fas fa-search-plus fa-3x text-white"></i>
+        <font-awesome-icon class="text-white" icon="fa-search-plus" size="3x" />
       </div>
       <img class="img-fluid" :src="project.image" :alt="project.name" />
     </button>

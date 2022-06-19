@@ -56,12 +56,14 @@ export default {
         {
           name: 'LinkedIn',
           link: 'https://www.linkedin.com/in/phdealmeida/',
-          iconClasses: 'fab fa-linkedin-in fa-2x',
+          iconClasses: 'fa-brands fa-linkedin-in',
+          iconSize: '2x',
         },
         {
           name: 'GitHub',
           link: 'https://github.com/pedro1191',
-          iconClasses: 'fab fa-github fa-2x',
+          iconClasses: 'fa-brands fa-github',
+          iconSize: '2x',
         },
       ],
     };
