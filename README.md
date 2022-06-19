@@ -15,6 +15,7 @@ Please visit [https://pedrohsalmeida.com/](https://pedrohsalmeida.com/) for a li
 
 
 ## Project setup
+### Install dependencies
 ```
 npm install
 ```
@@ -37,12 +38,12 @@ npm run serve
 npm run build
 ```
 
-### Run your unit tests
+### Runs unit tests
 ```
 npm run test:unit
 ```
 
-### Run your end-to-end tests
+### Runs end-to-end tests
 ```
 npm run test:e2e
 ```
