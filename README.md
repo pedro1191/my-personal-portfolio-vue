@@ -20,9 +20,9 @@ Please visit [https://pedrohsalmeida.com/](https://pedrohsalmeida.com/) for a li
 npm install
 ```
 
-### Create a **.env.development.local** file from **.env.example** and set the environment variable values
+### Create a **.env.local** file from **.env.example** and set the environment variable values
 ```
-cp .env.example .env.development.local
+cp .env.example .env.local
 ```
 
 - **PORT**: optional. The port in which the application should run
