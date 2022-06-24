@@ -1,6 +1,6 @@
 <template>
   <transition name="modal">
-    <div class="modal-mask" @click="emitMaskClickEvent">
+    <div class="modal-mask" @click.self="$emit('maskClick')">
       <div class="modal-wrapper">
         <div id="modal-container" class="modal-container">
           <div class="modal-content" :style="customContentStyle">
@@ -28,13 +28,6 @@ export default {
   props: {
     customContentStyle: Object,
   },
-  methods: {
-    emitMaskClickEvent(event) {
-      if (event.target.id === 'modal-container') {
-        this.$emit('maskClick');
-      }
-    },
-  },
 };
 </script>
 
@@ -48,18 +41,15 @@ export default {
   height: 100%;
   background-color: rgba(0, 0, 0, 0.5);
   transition: opacity 0.3s ease;
-  padding: 0;
+  padding: 2.5%;
   margin: 0;
+  overflow: auto;
+  box-sizing: border-box;
 }
 
 .modal-wrapper {
-  position: absolute;
-  top: 0;
-  right: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  overflow: auto;
+  display: inline-flex;
+  min-height: 100%;
   padding: 0;
   margin: 0;
   background-color: transparent;
@@ -70,7 +60,7 @@ export default {
   display: flex;
   align-items: center;
   justify-content: center;
-  min-height: 100vh;
+  min-height: 100%;
   padding: 0;
   margin: 0;
   background-color: transparent;

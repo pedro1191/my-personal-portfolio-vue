@@ -6,7 +6,7 @@
     <template v-slot:header>
       <div class="close-button">
         <button title="Close" @click="$emit('projectClosed')">
-          <i class="fas fa-times fa-3x"></i>
+          <font-awesome-icon icon="fa-times" size="3x" />
         </button>
       </div>
     </template>
@@ -20,7 +20,7 @@
             :href="project.live_demo_link"
             v-if="project.live_demo_link"
           >
-            Live Demo <i class="fas fa-eye"></i>
+            Live Demo <font-awesome-icon icon="fa-eye" />
           </a>
           <a
             class="btn btn-secondary"
@@ -28,7 +28,7 @@
             rel="noreferrer noopener"
             :href="project.source_code_link"
           >
-            Source Code <i class="fas fa-code"></i>
+            Source Code <font-awesome-icon icon="fa-code" />
           </a>
         </div>
         <div id="description" v-html="project.description"></div>

@@ -7,7 +7,7 @@
       @click="$emit('projectOpened', project.id)"
     >
       <div class="portfolio-item-caption">
-        <i class="fas fa-search-plus fa-3x text-white"></i>
+        <font-awesome-icon class="text-white" icon="fa-search-plus" size="3x" />
       </div>
       <img class="img-fluid" :src="project.image" :alt="project.name" />
     </button>
@@ -15,6 +15,8 @@
 </template>
 
 <script>
+import { getRandomBackgroundColor } from '@/helpers';
+
 export default {
   name: 'AppProject',
   props: {
@@ -25,10 +27,7 @@ export default {
   },
   computed: {
     randomBackgroundColor: function () {
-      const min = Math.ceil(100000);
-      const max = Math.floor(999999);
-      const hexColor = `#${Math.floor(Math.random() * (max - min)) + min}`;
-      return hexColor;
+      return getRandomBackgroundColor();
     },
   },
 };

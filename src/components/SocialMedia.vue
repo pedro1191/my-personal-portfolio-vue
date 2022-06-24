@@ -8,7 +8,11 @@
       target="_blank"
       rel="noreferrer noopener"
     >
-      <i :class="sm.iconClasses" :title="sm.name"></i>
+      <font-awesome-icon
+        :icon="sm.iconClasses"
+        :size="sm.iconSize"
+        :title="sm.name"
+      />
     </a>
   </div>
 </template>

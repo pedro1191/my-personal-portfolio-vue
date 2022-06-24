@@ -5835,7 +5835,7 @@ a.close.disabled {
   outline: 0;
   padding: 0;
   transition: all 0.3s ease;
-  margin: 2.5%;
+  margin: 0;
   width: auto;
 }
 

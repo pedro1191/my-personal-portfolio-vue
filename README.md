@@ -15,13 +15,14 @@ Please visit [https://pedrohsalmeida.com/](https://pedrohsalmeida.com/) for a li
 
 
 ## Project setup
+### Install dependencies
 ```
 npm install
 ```
 
-### Create a **.env.development.local** file from **.env.example** and set the environment variable values
+### Create a **.env.local** file from **.env.example** and set the environment variable values
 ```
-cp .env.example .env.development.local
+cp .env.example .env.local
 ```
 
 - **PORT**: optional. The port in which the application should run
@@ -37,12 +38,12 @@ npm run serve
 npm run build
 ```
 
-### Run your unit tests
+### Runs unit tests
 ```
 npm run test:unit
 ```
 
-### Run your end-to-end tests
+### Runs end-to-end tests
 ```
 npm run test:e2e
 ```

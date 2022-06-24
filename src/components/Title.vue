@@ -1,6 +1,6 @@
 <template>
-  <div class="title" :style="getWrapperStyle">
-    <h1 :style="getTitleStyle">{{ title }}</h1>
+  <div class="title" :style="getWrapperStyle" data-test="title-wrapper">
+    <h1 :style="getTitleStyle" data-test="title-text">{{ title }}</h1>
     <Divider :customStyle="getDividerStyle" />
   </div>
 </template>
