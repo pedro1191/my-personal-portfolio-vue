@@ -23,3 +23,13 @@
 //
 // -- This is will overwrite an existing command --
 // Cypress.Commands.overwrite("visit", (originalFn, url, options) => { ... })
+
+Cypress.Commands.add('interceptAPICall', (method, url, returnData) => {
+  cy.intercept(
+    {
+      method,
+      url: `${Cypress.env('VUE_APP_DEFAULT_BACKEND_API_URL')}/${url}`,
+    },
+    returnData
+  ).as(url);
+});
