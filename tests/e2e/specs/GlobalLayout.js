@@ -30,9 +30,9 @@ describe('GlobalLayout.vue', () => {
     cy.get('#contact').within(() => {
       cy.contains('h1', 'CONTACT');
       cy.get('form').within(() => {
-        cy.get('[placeholder="Name"]');
-        cy.get('[placeholder="Email"]');
-        cy.get('[placeholder="Message"]');
+        cy.get('[placeholder="Name *"]');
+        cy.get('[placeholder="Email *"]');
+        cy.get('[placeholder="Message *"]');
         cy.get('button').should('be.disabled');
       });
     });
@@ -99,9 +99,9 @@ describe('GlobalLayout.vue', () => {
     cy.visit('/');
 
     cy.get('form').within(() => {
-      cy.get('[placeholder="Name"]').type(faker.name.findName());
-      cy.get('[placeholder="Email"]').type(faker.internet.email());
-      cy.get('[placeholder="Message"]').type(faker.lorem.sentences());
+      cy.get('[placeholder="Name *"]').type(faker.name.findName());
+      cy.get('[placeholder="Email *"]').type(faker.internet.email());
+      cy.get('[placeholder="Message *"]').type(faker.lorem.sentences());
       cy.get('button').should('be.enabled').click();
     });
 
