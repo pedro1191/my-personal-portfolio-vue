@@ -18,32 +18,28 @@
       <div class="row">
         <div class="col-md-6">
           <p class="lead">
-            I am a Technologist in System Analysis and Development who graduated
-            in 2014 from the Federal University of Technology - Paraná.
+            I'm a Full Stack Web Developer with 6+ years of experience
+            developing, testing, and maintaining enterprise software
+            applications, often designing and developing from use cases and
+            functional requirements.
           </p>
           <p class="lead">
-            I worked in a company as a Full Stack Developer until 2016, when I
-            decided to apply for a Master's Degree in Applied Computing.
-          </p>
-          <p class="lead">
-            In 2018, I obtained my Master's Degree in Applied Computing from the
-            State University of Ponta Grossa. Since then, I have been working
-            full-time as a Full Stack Web Developer.
+            My first contact with programming was in 2009, using C language.
+            Learning how to solve problems and "give life" to things was
+            something that amused me from the start.
           </p>
         </div>
         <div class="col-md-6">
           <p class="lead">
-            Currently, I have more than six years of experience in system
-            development. Although I have already worked with several Front-End
-            and Back-End development technologies, my most considerable
-            experience is with some specific tools.
+            I started my career in 2014 and have already worked with different
+            platforms, but it was in Web development that I found my place. I've
+            been working as a Full Stack Developer since the beginning, although
+            I took a "two-year break" to focus on my master's between 2016 and
+            2018.
           </p>
           <p class="lead">
-            I use Vue JS and React JS for the Front-End development, focusing on
-            Progressive Web Applications. And I have experience creating RESTful
-            and GraphQL APIs for Back-End development, mainly with Laravel/Lumen
-            framework in PHP programming language. I also work with relational
-            database management systems, like PostgreSQL, MySQL, and SQLServer.
+            For more details about my professional experience, please refer to
+            my LinkedIn and GitHub profiles in the footer.
           </p>
         </div>
       </div>
