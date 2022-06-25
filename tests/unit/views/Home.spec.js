@@ -65,9 +65,9 @@ describe('Home.vue', () => {
 
     // ACT
     const form = wrapper.get('form');
-    const nameInput = form.get('[placeholder="Name"');
-    const emailInput = form.get('[placeholder="Email"');
-    const messageInput = form.get('[placeholder="Message"');
+    const nameInput = form.get('[placeholder="Name *"');
+    const emailInput = form.get('[placeholder="Email *"');
+    const messageInput = form.get('[placeholder="Message *"');
     const nameValue = faker.name.findName();
     const emailValue = faker.internet.email();
     const messageValue = faker.lorem.paragraphs();
