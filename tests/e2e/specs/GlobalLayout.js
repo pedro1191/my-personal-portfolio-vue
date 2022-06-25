@@ -64,13 +64,7 @@ describe('GlobalLayout.vue', () => {
         },
       ],
     };
-    cy.intercept(
-      {
-        method: 'GET',
-        url: `${Cypress.env('VUE_APP_DEFAULT_BACKEND_API_URL')}/projects`,
-      },
-      mockedReturnData
-    ).as('projects');
+    cy.interceptAPICall('GET', 'projects', mockedReturnData);
 
     cy.visit('/');
 
@@ -100,13 +94,7 @@ describe('GlobalLayout.vue', () => {
       message: 'Your message has been sent successfully.',
       status_code: 200,
     };
-    cy.intercept(
-      {
-        method: 'POST',
-        url: `${Cypress.env('VUE_APP_DEFAULT_BACKEND_API_URL')}/messages`,
-      },
-      mockedReturnData
-    ).as('contactMessage');
+    cy.interceptAPICall('POST', 'messages', mockedReturnData);
 
     cy.visit('/');
 
@@ -117,7 +105,7 @@ describe('GlobalLayout.vue', () => {
       cy.get('button').should('be.enabled').click();
     });
 
-    cy.wait('@contactMessage').then((interception) => {
+    cy.wait('@messages').then((interception) => {
       assert.isNotNull(interception.response.body, 'API call has data');
     });
 
