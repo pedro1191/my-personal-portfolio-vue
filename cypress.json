@@ -1,7 +1,7 @@
 {
   "baseUrl": "http://localhost:8080",
   "env": {
-    "VUE_APP_DEFAULT_BACKEND_API_URL": "https://www.pedrohsalmeida.com/apis/my-personal-portfolio/api/v1"
+    "VUE_APP_DEFAULT_BACKEND_API_URL": "https://api.pedrohsalmeida.com/api/v1"
   },
   "pluginsFile": "tests/e2e/plugins/index.js"
 }
