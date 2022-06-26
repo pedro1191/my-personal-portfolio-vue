@@ -1,7 +1,5 @@
 <template>
-  <div id="app" class="h-100">
-    <GlobalLayout />
-  </div>
+  <GlobalLayout />
 </template>
 
 <script>
