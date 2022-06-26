@@ -12,7 +12,6 @@ jobs:
       uses: appleboy/ssh-action@master
       env:
         CONTAINER: my-personal-portfolio-front
-        ENV_FILE: ${{ secrets.ENV_FILE }}
         IMAGE: my-personal-portfolio-front
         TAG: latest
         WORKDIR: portfolio/vue_projects/my-personal-portfolio-vue
@@ -21,11 +20,11 @@ jobs:
         username: ${{ secrets.USERNAME }}
         key: ${{ secrets.KEY }}
         port: ${{ secrets.PORT }}
-        envs: CONTAINER, ENV_FILE, IMAGE, TAG, WORKDIR
+        envs: CONTAINER, IMAGE, TAG, WORKDIR
         script: |
           cd $WORKDIR
           git pull
-          echo $ENV_FILE | base64 -d > .env
+          cp .env.example .env
           source .env
           docker build -t $IMAGE:$TAG .
           docker stop $CONTAINER
