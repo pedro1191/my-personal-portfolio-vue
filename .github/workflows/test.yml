@@ -35,5 +35,5 @@ jobs:
           start: |
             cp .env.example .env.local
             npm run test:e2e
-          wait-on: 'http://localhost:8080'
+          wait-on: 'http://localhost:8081'
           config-file: cypress.json
