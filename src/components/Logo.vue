@@ -3,7 +3,7 @@
 </template>
 
 <script>
-import appLogo from '../assets/profile.png';
+import appLogo from '@/assets/profile.png';
 
 export default {
   name: 'AppLogo',

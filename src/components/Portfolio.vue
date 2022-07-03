@@ -15,8 +15,8 @@
 </template>
 
 <script>
-import Project from './Project.vue';
-import ProjectDetails from './ProjectDetails.vue';
+import Project from '@/components/Project.vue';
+import ProjectDetails from '@/components/ProjectDetails.vue';
 
 export default {
   name: 'AppPortfolio',
