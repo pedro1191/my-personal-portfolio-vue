@@ -12,7 +12,7 @@
 </template>
 
 <script>
-import FormGroup from './FormGroup.vue';
+import FormGroup from '@/components/FormGroup.vue';
 
 export default {
   name: 'AppForm',

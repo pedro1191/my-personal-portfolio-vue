@@ -1,9 +1,11 @@
 import { faker } from '@faker-js/faker';
 import { mount } from '@vue/test-utils';
+import { nextTick } from 'vue';
+import { TIMEOUT_MS } from '@/mixins/modal';
 import ProjectDetails from '@/components/ProjectDetails.vue';
 
 describe('ProjectDetails.vue', () => {
-  it('renders props.project when passed', () => {
+  it('renders props.project when passed', async () => {
     // ARRANGE
     const project = {
       name: faker.lorem.words(),
@@ -20,6 +22,7 @@ describe('ProjectDetails.vue', () => {
     });
 
     // ACT
+    await nextTick();
     const liveDemoLink = wrapper.get(`[href="${project.live_demo_link}"]`);
     const sourceCodeLink = wrapper.get(`[href="${project.source_code_link}"]`);
     const image = wrapper.get('img');
@@ -32,7 +35,7 @@ describe('ProjectDetails.vue', () => {
     expect(image.attributes('src')).toBe(project.image);
   });
 
-  it('emits the projectClosed event when the close button is clicked', async () => {
+  it('emits the projectClosed event when the close button is clicked', (done) => {
     // ARRANGE
     const project = {
       name: faker.lorem.words(),
@@ -49,9 +52,14 @@ describe('ProjectDetails.vue', () => {
     });
 
     // ACT
-    await wrapper.get('button').trigger('click');
+    wrapper.vm.$nextTick(async () => {
+      await wrapper.get('button').trigger('click');
 
-    // ASSERT
-    expect(wrapper.emitted().projectClosed).toBeTruthy();
+      // ASSERT
+      setTimeout(() => {
+        expect(wrapper.emitted().projectClosed).toBeTruthy();
+        done();
+      }, TIMEOUT_MS);
+    });
   });
 });

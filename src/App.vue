@@ -3,7 +3,7 @@
 </template>
 
 <script>
-import GlobalLayout from './views/GlobalLayout.vue';
+import GlobalLayout from '@/views/GlobalLayout.vue';
 
 export default {
   components: {

@@ -6,7 +6,7 @@
 </template>
 
 <script>
-import Divider from './Divider.vue';
+import Divider from '@/components/Divider.vue';
 
 export default {
   name: 'AppTitle',
