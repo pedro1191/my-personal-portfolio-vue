@@ -1,55 +1,46 @@
 <template>
-  <Modal
+  <ProjectDetailsModal
     :customContentStyle="{ backgroundColor: '#fff' }"
-    @maskClick="$emit('projectClosed')"
+    @close="$emit('projectClosed')"
   >
-    <template v-slot:header>
-      <div class="close-button">
-        <button title="Close" @click="$emit('projectClosed')">
-          <font-awesome-icon icon="fa-times" size="3x" />
-        </button>
+    <Section class="no-padding-top" :title="project.name">
+      <div class="project-links">
+        <a
+          class="btn btn-success"
+          target="_blank"
+          rel="noreferrer noopener"
+          :href="project.live_demo_link"
+          v-if="project.live_demo_link"
+        >
+          Live Demo <font-awesome-icon icon="fa-eye" />
+        </a>
+        <a
+          class="btn btn-secondary"
+          target="_blank"
+          rel="noreferrer noopener"
+          :href="project.source_code_link"
+        >
+          Source Code <font-awesome-icon icon="fa-code" />
+        </a>
       </div>
-    </template>
-    <template v-slot:body>
-      <Section class="no-padding-top" :title="project.name">
-        <div class="project-links">
-          <a
-            class="btn btn-success"
-            target="_blank"
-            rel="noreferrer noopener"
-            :href="project.live_demo_link"
-            v-if="project.live_demo_link"
-          >
-            Live Demo <font-awesome-icon icon="fa-eye" />
-          </a>
-          <a
-            class="btn btn-secondary"
-            target="_blank"
-            rel="noreferrer noopener"
-            :href="project.source_code_link"
-          >
-            Source Code <font-awesome-icon icon="fa-code" />
-          </a>
-        </div>
-        <div id="description" v-html="project.description"></div>
-        <img
-          class="img-fluid project-image"
-          :src="project.image"
-          :alt="project.name"
-        />
-      </Section>
-    </template>
-  </Modal>
+      <div id="description" v-html="project.description"></div>
+      <img
+        class="img-fluid project-image"
+        :src="project.image"
+        :alt="project.name"
+      />
+    </Section>
+  </ProjectDetailsModal>
 </template>
 
 <script>
-import Modal from './Modal.vue';
-import Section from './Section.vue';
+import ProjectDetailsModal from '@/components/ProjectDetailsModal.vue';
+import Section from '@/components/Section.vue';
 
 export default {
   name: 'AppProjectDetails',
   components: {
-    Modal,
+    ProjectDetailsModal,
     Section,
   },
   props: {
