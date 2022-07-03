@@ -81,9 +81,13 @@ export default {
   padding: 0 0 0 1rem;
   color: #17a2b8;
   opacity: 0;
+  top: 35px;
+  transition: opacity 0.25s, top 0.25s;
+  position: relative;
 }
 
 .show-label {
   opacity: 1;
+  top: 0;
 }
 </style>
