@@ -4,7 +4,11 @@ import UpdateNotifier from '@/components/UpdateNotifier.vue';
 describe('UpdateNotifier.vue', () => {
   it('renders a UpdateNotifier', () => {
     // ARRANGE
-    const wrapper = mount(UpdateNotifier);
+    const wrapper = mount(UpdateNotifier, {
+      data() {
+        return { updateExists: true };
+      },
+    });
 
     // ACT
     const wrapperText = wrapper.text();
