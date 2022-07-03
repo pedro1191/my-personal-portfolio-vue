@@ -7,6 +7,12 @@ const routes = [
     name: 'home',
     component: Home,
   },
+  {
+    path: '/:pathMatch(.*)*',
+    beforeEnter: (to, from, next) => {
+      next('/');
+    },
+  },
 ];
 
 const router = createRouter({
