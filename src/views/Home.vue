@@ -57,26 +57,16 @@
       </div>
     </Section>
 
-    <Modal
+    <FeedbackMessageModal
       v-if="this.modal.error || this.modal.success"
       :customContentStyle="{ backgroundColor: '#fff' }"
+      @close="onModalClose"
     >
-      <template v-slot:body>
-        <p>
-          <strong>{{ this.modal.message }}</strong>
-        </p>
-      </template>
-      <template v-slot:footer>
-        <button title="Close" class="btn btn-info" @click="onModalClose">
-          Ok
-        </button>
-      </template>
-    </Modal>
-    <Modal v-if="this.modal.loading">
-      <template v-slot:body>
-        <Spinner />
-      </template>
-    </Modal>
+      <p>
+        <strong>{{ this.modal.message }}</strong>
+      </p>
+    </FeedbackMessageModal>
+    <Spinner v-if="this.modal.loading" />
   </div>
 </template>
 
@@ -87,7 +77,7 @@ import axios from '@/axios-default';
 import Form from '@/components/Form.vue';
 import Header from '@/components/Header.vue';
 import Logo from '@/components/Logo.vue';
-import Modal from '@/components/Modal.vue';
+import FeedbackMessageModal from '@/components/FeedbackMessageModal.vue';
 import Portfolio from '@/components/Portfolio.vue';
 import Section from '@/components/Section.vue';
 import Spinner from '@/components/Spinner.vue';
@@ -105,7 +95,7 @@ export default {
     Section,
     Portfolio,
     Form,
-    Modal,
+    FeedbackMessageModal,
     Spinner,
   },
   data() {
