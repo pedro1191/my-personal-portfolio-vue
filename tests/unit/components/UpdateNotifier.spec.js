@@ -1,0 +1,17 @@
+import { mount } from '@vue/test-utils';
+import UpdateNotifier from '@/components/UpdateNotifier.vue';
+
+describe('UpdateNotifier.vue', () => {
+  it('renders a UpdateNotifier', () => {
+    // ARRANGE
+    const wrapper = mount(UpdateNotifier);
+
+    // ACT
+    const wrapperText = wrapper.text();
+    const button = wrapper.get('button');
+
+    // ASSERT
+    expect(wrapperText).toContain('There is an update available!');
+    expect(button.text()).toBe('Refresh');
+  });
+});

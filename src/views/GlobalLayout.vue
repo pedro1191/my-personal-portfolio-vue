@@ -17,6 +17,7 @@
       </Header>
     </Footer>
   </div>
+  <UpdateNotifier></UpdateNotifier>
 </template>
 
 <script>
@@ -24,6 +25,7 @@ import Footer from '@/components/Footer.vue';
 import Header from '@/components/Header.vue';
 import Navbar from '@/components/Navbar.vue';
 import SocialMedia from '@/components/SocialMedia.vue';
+import UpdateNotifier from '@/components/UpdateNotifier.vue';
 
 export default {
   name: 'GlobalLayout',
@@ -32,6 +34,7 @@ export default {
     Footer,
     Header,
     SocialMedia,
+    UpdateNotifier,
   },
   data() {
     return {
