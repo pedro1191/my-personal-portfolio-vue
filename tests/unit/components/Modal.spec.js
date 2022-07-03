@@ -22,17 +22,6 @@ describe('Modal.vue', () => {
     );
   });
 
-  it('emits the maskClick event when the mask is clicked', async () => {
-    // ARRANGE
-    const wrapper = mount(Modal);
-
-    // ACT
-    await wrapper.get('[class="modal-mask"]').trigger('click');
-
-    // ASSERT
-    expect(wrapper.emitted().maskClick).toBeTruthy();
-  });
-
   it('renders the slots', () => {
     // ARRANGE
     const headerContent = faker.lorem.words();
