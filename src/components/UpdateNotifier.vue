@@ -41,7 +41,7 @@ export default {
   },
   methods: {
     showNotification(event) {
-      this.registration = event.registration;
+      this.registration = event.detail;
       this.updateExists = true;
     },
     refreshApp() {
