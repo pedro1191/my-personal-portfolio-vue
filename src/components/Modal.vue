@@ -35,6 +35,7 @@ export default {
   padding: 0;
   margin: 0;
   background-color: transparent;
+  max-width: 900px;
 }
 
 .modal-container {
