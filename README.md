@@ -14,6 +14,8 @@ The following technologies are being used:
 - [vue-gtag](https://github.com/MatteoGabriele/vue-gtag): to send event data to Google Analytics
 - [vuelidate](https://github.com/vuelidate/vuelidate): to validate the contact form
 
+
+## Live demo
 Please visit [https://pedrohsalmeida.com/](https://pedrohsalmeida.com/) for a live demo.
 
 
