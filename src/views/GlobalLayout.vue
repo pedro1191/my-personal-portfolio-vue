@@ -7,7 +7,7 @@
         <div class="row">
           <div class="col-md-6 my-3">
             <h4 class="mb-4">LOCATION</h4>
-            <p class="lead mb-0">Recife/PE - Brazil.</p>
+            <p class="lead mb-0">Lisbon - Portugal.</p>
           </div>
           <div class="col-md-6 my-3">
             <h4 class="mb-4">AROUND THE WEB</h4>

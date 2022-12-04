@@ -39,7 +39,7 @@ describe('GlobalLayout.vue', () => {
 
     cy.get('footer').within(() => {
       cy.contains('h4', 'LOCATION');
-      cy.contains('p', 'Recife/PE - Brazil.');
+      cy.contains('p', 'Lisbon - Portugal.');
       cy.contains('h4', 'AROUND THE WEB');
       cy.contains('a', 'LinkedIn');
       cy.contains('a', 'GitHub');
