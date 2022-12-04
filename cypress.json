@@ -3,5 +3,6 @@
   "env": {
     "VUE_APP_DEFAULT_BACKEND_API_URL": "https://api.pedrohsalmeida.com/api/v1"
   },
-  "pluginsFile": "tests/e2e/plugins/index.js"
+  "pluginsFile": "tests/e2e/plugins/index.js",
+  "defaultCommandTimeout": 10000
 }
