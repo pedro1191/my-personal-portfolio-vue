@@ -31,7 +31,12 @@ jobs:
 
       - name: Cypress run
         uses: cypress-io/github-action@v4
+        env:
+          CYPRESS_RECORD_KEY: ${{ secrets.CYPRESS_RECORD_KEY }}
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
+          record: true
+          parallel: true
           start: |
             cp .env.example .env.local
             npm run test:e2e
