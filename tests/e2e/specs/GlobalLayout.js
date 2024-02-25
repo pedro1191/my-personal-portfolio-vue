@@ -122,7 +122,6 @@ describe('GlobalLayout.vue', () => {
     cy.get('.loader').should('be.visible');
 
     cy.wait('@messages').then((interception) => {
-      cy.log('response', interception.response.body);
       expect(interception.response.body.message).to.be.equal(
         mockedReturnData.body.message
       );
@@ -132,8 +131,7 @@ describe('GlobalLayout.vue', () => {
 
     cy.get('.modal-mask')
       .should('be.visible')
-      .within((modal) => {
-        cy.log('modal', modal.html());
+      .within(() => {
         cy.contains('p', mockedReturnData.body.message);
         cy.contains('button', 'Ok');
         cy.get('button').click();
