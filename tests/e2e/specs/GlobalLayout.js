@@ -76,16 +76,17 @@ describe('GlobalLayout.vue', () => {
       cy.get('.portfolio-item').should('have.length', 1).first().click();
     });
 
-    cy.get('.modal-mask').should('be.visible');
-    cy.get('.modal-mask').within(() => {
-      const project = mockedReturnData.data[0];
-      cy.contains('h1', project.name);
-      cy.get(`a[href="${project.live_demo_link}"]`);
-      cy.get(`a[href="${project.source_code_link}"]`);
-      cy.contains(project.description);
-      cy.get(`img[src="${project.image}"]`);
-      cy.get('button[title="Close"]').click();
-    });
+    cy.get('.modal-mask')
+      .should('be.visible')
+      .within(() => {
+        const project = mockedReturnData.data[0];
+        cy.contains('h1', project.name);
+        cy.get(`a[href="${project.live_demo_link}"]`);
+        cy.get(`a[href="${project.source_code_link}"]`);
+        cy.contains(project.description);
+        cy.get(`img[src="${project.image}"]`);
+        cy.get('button[title="Close"]').click();
+      });
     cy.get('.modal-mask').should('not.exist');
   });
 
@@ -109,15 +110,13 @@ describe('GlobalLayout.vue', () => {
       assert.isNotNull(interception.response.body, 'API call has data');
     });
 
-    cy.get('.modal-mask').should('be.visible');
-    cy.get('.modal-mask').within(() => {
-      cy.get('p')
-        .invoke('text')
-        .then((text) => console.log('innerText', text));
-      cy.contains('p', mockedReturnData.message);
-      cy.contains('button', 'Ok');
-      cy.get('button').click();
-    });
+    cy.get('.modal-mask')
+      .should('be.visible')
+      .within(() => {
+        cy.contains('p', mockedReturnData.message);
+        cy.contains('button', 'Ok');
+        cy.get('button').click();
+      });
     cy.get('.modal-mask').should('not.exist');
   });
 });
