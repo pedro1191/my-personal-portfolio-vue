@@ -66,6 +66,7 @@ describe('GlobalLayout.vue', () => {
         ],
       },
       statusCode: 200,
+      delay: 500,
     };
     cy.interceptAPICall('GET', 'projects', mockedReturnData);
 
@@ -102,6 +103,7 @@ describe('GlobalLayout.vue', () => {
         message: 'Your message has been sent successfully.',
       },
       statusCode: 200,
+      delay: 500,
     };
     cy.interceptAPICall('POST', 'messages', mockedReturnData);
 
