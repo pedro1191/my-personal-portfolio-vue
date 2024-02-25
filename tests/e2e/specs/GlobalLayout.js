@@ -51,48 +51,62 @@ describe('GlobalLayout.vue', () => {
 
   it('Opens the details of a project', () => {
     const mockedReturnData = {
-      data: [
-        {
-          description: faker.lorem.paragraph(),
-          id: faker.datatype.uuid(),
-          image: faker.image.dataUri(),
-          link: faker.internet.url(),
-          live_demo_link: faker.internet.url(),
-          name: faker.lorem.words(),
-          order: faker.datatype.number(),
-          source_code_link: faker.internet.url(),
-        },
-      ],
+      body: {
+        data: [
+          {
+            description: faker.lorem.paragraph(),
+            id: faker.datatype.uuid(),
+            image: faker.image.dataUri(),
+            link: faker.internet.url(),
+            live_demo_link: faker.internet.url(),
+            name: faker.lorem.words(),
+            order: faker.datatype.number(),
+            source_code_link: faker.internet.url(),
+          },
+        ],
+      },
+      statusCode: 200,
+      delay: 500,
     };
     cy.interceptAPICall('GET', 'projects', mockedReturnData);
 
     cy.visit('/');
 
+    cy.get('.loader').should('be.visible');
+
     cy.wait('@projects').then((interception) => {
-      assert.isNotNull(interception.response.body, 'API call has data');
+      expect(interception.response.body.data.length).to.be.equal(
+        mockedReturnData.body.data.length
+      );
     });
+
+    cy.get('.loader').should('not.exist');
 
     cy.get('#portfolio').within(() => {
       cy.get('.portfolio-item').should('have.length', 1).first().click();
     });
 
-    cy.get('.modal-mask').should('be.visible');
-    cy.get('.modal-mask').within(() => {
-      const project = mockedReturnData.data[0];
-      cy.contains('h1', project.name);
-      cy.get(`a[href="${project.live_demo_link}"]`);
-      cy.get(`a[href="${project.source_code_link}"]`);
-      cy.contains(project.description);
-      cy.get(`img[src="${project.image}"]`);
-      cy.get('button[title="Close"]').click();
-    });
+    cy.get('.modal-mask')
+      .should('be.visible')
+      .within(() => {
+        const project = mockedReturnData.body.data[0];
+        cy.contains('h1', project.name);
+        cy.get(`a[href="${project.live_demo_link}"]`);
+        cy.get(`a[href="${project.source_code_link}"]`);
+        cy.contains(project.description);
+        cy.get(`img[src="${project.image}"]`);
+        cy.get('button[title="Close"]').click();
+      });
     cy.get('.modal-mask').should('not.exist');
   });
 
   it('Sends the contact message', () => {
     const mockedReturnData = {
-      message: 'Your message has been sent successfully.',
-      status_code: 200,
+      body: {
+        message: 'Your message has been sent successfully.',
+      },
+      statusCode: 200,
+      delay: 500,
     };
     cy.interceptAPICall('POST', 'messages', mockedReturnData);
 
@@ -105,16 +119,23 @@ describe('GlobalLayout.vue', () => {
       cy.get('button').should('be.enabled').click();
     });
 
+    cy.get('.loader').should('be.visible');
+
     cy.wait('@messages').then((interception) => {
-      assert.isNotNull(interception.response.body, 'API call has data');
+      expect(interception.response.body.message).to.be.equal(
+        mockedReturnData.body.message
+      );
     });
 
-    cy.get('.modal-mask').should('be.visible');
-    cy.get('.modal-mask').within(() => {
-      cy.contains('p', mockedReturnData.message);
-      cy.contains('button', 'Ok');
-      cy.get('button').click();
-    });
+    cy.get('.loader').should('not.exist');
+
+    cy.get('.modal-mask')
+      .should('be.visible')
+      .within(() => {
+        cy.contains('p', mockedReturnData.body.message);
+        cy.contains('button', 'Ok');
+        cy.get('button').click();
+      });
     cy.get('.modal-mask').should('not.exist');
   });
 });
