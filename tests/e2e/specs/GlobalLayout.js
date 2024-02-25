@@ -73,7 +73,6 @@ describe('GlobalLayout.vue', () => {
     cy.visit('/');
 
     cy.wait('@projects').then((interception) => {
-      assert.isNotNull(interception.response.body, 'API call has data');
       expect(interception.response.body.data.length).to.be.equal(
         mockedReturnData.body.data.length
       );
@@ -117,7 +116,7 @@ describe('GlobalLayout.vue', () => {
     });
 
     cy.wait('@messages').then((interception) => {
-      assert.isNotNull(interception.response.body, 'API call has data');
+      cy.log('response', interception.response.body);
       expect(interception.response.body.message).to.be.equal(
         mockedReturnData.body.message
       );
@@ -125,7 +124,8 @@ describe('GlobalLayout.vue', () => {
 
     cy.get('.modal-mask')
       .should('be.visible')
-      .within(() => {
+      .within((modal) => {
+        cy.log('modal', modal.html());
         cy.contains('p', mockedReturnData.body.message);
         cy.contains('button', 'Ok');
         cy.get('button').click();
