@@ -51,18 +51,21 @@ describe('GlobalLayout.vue', () => {
 
   it('Opens the details of a project', () => {
     const mockedReturnData = {
-      data: [
-        {
-          description: faker.lorem.paragraph(),
-          id: faker.datatype.uuid(),
-          image: faker.image.dataUri(),
-          link: faker.internet.url(),
-          live_demo_link: faker.internet.url(),
-          name: faker.lorem.words(),
-          order: faker.datatype.number(),
-          source_code_link: faker.internet.url(),
-        },
-      ],
+      body: {
+        data: [
+          {
+            description: faker.lorem.paragraph(),
+            id: faker.datatype.uuid(),
+            image: faker.image.dataUri(),
+            link: faker.internet.url(),
+            live_demo_link: faker.internet.url(),
+            name: faker.lorem.words(),
+            order: faker.datatype.number(),
+            source_code_link: faker.internet.url(),
+          },
+        ],
+      },
+      statusCode: 200,
     };
     cy.interceptAPICall('GET', 'projects', mockedReturnData);
 
@@ -70,6 +73,9 @@ describe('GlobalLayout.vue', () => {
 
     cy.wait('@projects').then((interception) => {
       assert.isNotNull(interception.response.body, 'API call has data');
+      expect(interception.response.body.data.length).to.be.equal(
+        mockedReturnData.body.data.length
+      );
     });
 
     cy.get('#portfolio').within(() => {
@@ -79,7 +85,7 @@ describe('GlobalLayout.vue', () => {
     cy.get('.modal-mask')
       .should('be.visible')
       .within(() => {
-        const project = mockedReturnData.data[0];
+        const project = mockedReturnData.body.data[0];
         cy.contains('h1', project.name);
         cy.get(`a[href="${project.live_demo_link}"]`);
         cy.get(`a[href="${project.source_code_link}"]`);
@@ -92,8 +98,10 @@ describe('GlobalLayout.vue', () => {
 
   it('Sends the contact message', () => {
     const mockedReturnData = {
-      message: 'Your message has been sent successfully.',
-      status_code: 200,
+      body: {
+        message: 'Your message has been sent successfully.',
+      },
+      statusCode: 200,
     };
     cy.interceptAPICall('POST', 'messages', mockedReturnData);
 
@@ -108,14 +116,15 @@ describe('GlobalLayout.vue', () => {
 
     cy.wait('@messages').then((interception) => {
       assert.isNotNull(interception.response.body, 'API call has data');
-      cy.log('body', interception.response.body);
+      expect(interception.response.body.message).to.be.equal(
+        mockedReturnData.body.message
+      );
     });
 
     cy.get('.modal-mask')
       .should('be.visible')
-      .within((modal) => {
-        cy.log('innerHTML', modal.html());
-        cy.contains('p', mockedReturnData.message);
+      .within(() => {
+        cy.contains('p', mockedReturnData.body.message);
         cy.contains('button', 'Ok');
         cy.get('button').click();
       });
