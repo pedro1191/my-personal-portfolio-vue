@@ -72,11 +72,15 @@ describe('GlobalLayout.vue', () => {
 
     cy.visit('/');
 
+    cy.get('.loader').should('be.visible');
+
     cy.wait('@projects').then((interception) => {
       expect(interception.response.body.data.length).to.be.equal(
         mockedReturnData.body.data.length
       );
     });
+
+    cy.get('.loader').should('not.exist');
 
     cy.get('#portfolio').within(() => {
       cy.get('.portfolio-item').should('have.length', 1).first().click();
@@ -115,12 +119,16 @@ describe('GlobalLayout.vue', () => {
       cy.get('button').should('be.enabled').click();
     });
 
+    cy.get('.loader').should('be.visible');
+
     cy.wait('@messages').then((interception) => {
       cy.log('response', interception.response.body);
       expect(interception.response.body.message).to.be.equal(
         mockedReturnData.body.message
       );
     });
+
+    cy.get('.loader').should('not.exist');
 
     cy.get('.modal-mask')
       .should('be.visible')
