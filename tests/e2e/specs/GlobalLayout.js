@@ -108,6 +108,9 @@ describe('GlobalLayout.vue', () => {
 
     cy.wait('@messages').then((interception) => {
       assert.isNotNull(interception.response.body, 'API call has data');
+      expect(interception.response.body.data.message).toBe(
+        mockedReturnData.message
+      );
     });
 
     cy.get('.modal-mask').should('be.visible');
