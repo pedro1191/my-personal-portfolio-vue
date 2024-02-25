@@ -1,6 +1,5 @@
 {
   "baseUrl": "http://localhost:8081",
-  "defaultCommandTimeout": 60000,
   "env": {
     "VUE_APP_DEFAULT_BACKEND_API_URL": "https://api.pedrohsalmeida.com"
   },
