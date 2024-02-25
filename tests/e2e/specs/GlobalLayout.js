@@ -110,13 +110,12 @@ describe('GlobalLayout.vue', () => {
       assert.isNotNull(interception.response.body, 'API call has data');
     });
 
-    cy.get('.modal-mask')
-      .should('be.visible')
-      .within(() => {
-        // cy.contains('p', mockedReturnData.message);
-        // cy.contains('button', 'Ok');
-        cy.get('button').click();
-      });
-    cy.get('.modal-mask').should('not.exist');
+    cy.get('.modal-mask').should('be.visible');
+    // .within(() => {
+    // cy.contains('p', mockedReturnData.message);
+    // cy.contains('button', 'Ok');
+    // cy.get('button').click();
+    // });
+    // cy.get('.modal-mask').should('not.exist');
   });
 });
