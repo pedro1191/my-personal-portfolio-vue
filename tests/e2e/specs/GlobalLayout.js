@@ -111,6 +111,9 @@ describe('GlobalLayout.vue', () => {
 
     cy.get('.modal-mask').should('be.visible');
     cy.get('.modal-mask').within(() => {
+      cy.get('p')
+        .invoke('text')
+        .then((text) => console.log('innerText', text));
       cy.contains('p', mockedReturnData.message);
       cy.contains('button', 'Ok');
       cy.get('button').click();
