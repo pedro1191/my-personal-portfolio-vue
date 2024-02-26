@@ -82,7 +82,9 @@ export default {
   color: #17a2b8;
   opacity: 0;
   top: 35px;
-  transition: opacity 0.25s, top 0.25s;
+  transition:
+    opacity 0.25s,
+    top 0.25s;
   position: relative;
 }
 

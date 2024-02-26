@@ -18,7 +18,7 @@ describe('Modal.vue', () => {
 
     // ASSERT
     expect(content.attributes('style')).toBe(
-      `color: ${customContentStyle.color};`
+      `color: ${customContentStyle.color};`,
     );
   });
 

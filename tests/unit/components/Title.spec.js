@@ -52,13 +52,13 @@ describe('Title.vue', () => {
 
     // ASSERT
     expect(titleWrapper.attributes('style')).toBe(
-      `color: ${customStyle.wrapper.color};`
+      `color: ${customStyle.wrapper.color};`,
     );
     expect(titleText.attributes('style')).toBe(
-      `color: ${customStyle.title.color};`
+      `color: ${customStyle.title.color};`,
     );
     expect(divider.attributes('style')).toBe(
-      `color: ${customStyle.divider.color};`
+      `color: ${customStyle.divider.color};`,
     );
   });
 });

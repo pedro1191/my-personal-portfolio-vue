@@ -26,7 +26,7 @@ library.add(
   faSearchPlus,
   faSpinner,
   faStarOfLife,
-  faTimes
+  faTimes,
 );
 
 createApp(App)

@@ -26,7 +26,7 @@ describe('FormGroup.vue', () => {
     // ASSERT
     expect(formGroupLabel.text()).toBe(formGroup.label);
     expect(formGroupInput.attributes('placeholder')).toBe(
-      formGroup.description
+      formGroup.description,
     );
     if (formGroup.disabled) {
       expect(formGroupInput.attributes('disabled')).toBeDefined();
@@ -59,7 +59,7 @@ describe('FormGroup.vue', () => {
     // ASSERT
     expect(formGroupLabel.text()).toBe(formGroup.label);
     expect(formGroupInput.attributes('placeholder')).toBe(
-      formGroup.description
+      formGroup.description,
     );
     if (formGroup.disabled) {
       expect(formGroupInput.attributes('disabled')).toBeDefined();

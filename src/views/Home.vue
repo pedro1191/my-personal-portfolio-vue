@@ -1,20 +1,20 @@
 <template>
   <div class="home">
-    <Header class="bg-info" id="home">
+    <AppHeader class="bg-info" id="home">
       <Logo class="img-fluid mb-5 d-block mx-auto" />
-      <Title
+      <AppTitle
         title="Pedro de Almeida"
         class="bg-info"
         :customStyle="appTitleCustomStyle"
       />
       <h2 class="font-weight-light">Full Stack Web Developer</h2>
-    </Header>
+    </AppHeader>
 
-    <Section id="portfolio" class="bg-white" title="PORTFOLIO">
+    <AppSection id="portfolio" class="bg-white" title="PORTFOLIO">
       <Portfolio :projects="projects" />
-    </Section>
+    </AppSection>
 
-    <Section id="about" class="bg-info text-white" title="ABOUT">
+    <AppSection id="about" class="bg-info text-white" title="ABOUT">
       <div class="row">
         <div class="col-md-6">
           <p class="lead">
@@ -43,19 +43,19 @@
           </p>
         </div>
       </div>
-    </Section>
+    </AppSection>
 
-    <Section id="contact" class="bg-white" title="CONTACT">
+    <AppSection id="contact" class="bg-white" title="CONTACT">
       <div class="row">
         <div class="col-lg-8 mx-auto">
-          <Form
+          <AppForm
             :formGroups="formGroups"
             @formSubmited="submitForm"
             @formGroupTouched="onFormGroupTouch($event)"
           />
         </div>
       </div>
-    </Section>
+    </AppSection>
 
     <FeedbackMessageModal
       v-if="this.modal.error || this.modal.success"
@@ -74,14 +74,14 @@
 import useVuelidate from '@vuelidate/core';
 import { helpers, required, email, maxLength } from '@vuelidate/validators';
 import axios from '@/axios-default';
-import Form from '@/components/Form.vue';
-import Header from '@/components/Header.vue';
+import AppForm from '@/components/Form.vue';
+import AppHeader from '@/components/Header.vue';
 import Logo from '@/components/Logo.vue';
 import FeedbackMessageModal from '@/components/FeedbackMessageModal.vue';
 import Portfolio from '@/components/Portfolio.vue';
-import Section from '@/components/Section.vue';
+import AppSection from '@/components/Section.vue';
 import Spinner from '@/components/Spinner.vue';
-import Title from '@/components/Title.vue';
+import AppTitle from '@/components/Title.vue';
 
 export default {
   name: 'AppHome',
@@ -89,12 +89,12 @@ export default {
     return { v$: useVuelidate() };
   },
   components: {
-    Header,
+    AppHeader,
     Logo,
-    Title,
-    Section,
+    AppTitle,
+    AppSection,
     Portfolio,
-    Form,
+    AppForm,
     FeedbackMessageModal,
     Spinner,
   },
@@ -263,7 +263,7 @@ export default {
           value: {
             required: helpers.withMessage(
               'The name field is required.',
-              required
+              required,
             ),
             maxLength: maxLength(100),
           },
@@ -272,11 +272,11 @@ export default {
           value: {
             required: helpers.withMessage(
               'The email field is required.',
-              required
+              required,
             ),
             email: helpers.withMessage(
               'The email field must be a valid email address.',
-              email
+              email,
             ),
             maxLength: maxLength(100),
           },
@@ -285,7 +285,7 @@ export default {
           value: {
             required: helpers.withMessage(
               'The message field is required.',
-              required
+              required,
             ),
             maxLength: maxLength(3000),
           },

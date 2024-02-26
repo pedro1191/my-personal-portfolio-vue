@@ -2,8 +2,8 @@
   <div class="d-flex flex-column h-100">
     <Navbar :navLinks="navLinks" />
     <router-view class="router-view" />
-    <Footer>
-      <Header class="bg-dark text-muted">
+    <AppFooter>
+      <AppHeader class="bg-dark text-muted">
         <div class="row">
           <div class="col-md-6 my-3">
             <h4 class="mb-4">LOCATION</h4>
@@ -14,15 +14,15 @@
             <SocialMedia :socialMedia="socialMedia" />
           </div>
         </div>
-      </Header>
-    </Footer>
+      </AppHeader>
+    </AppFooter>
   </div>
   <UpdateNotifier></UpdateNotifier>
 </template>
 
 <script>
-import Footer from '@/components/Footer.vue';
-import Header from '@/components/Header.vue';
+import AppFooter from '@/components/Footer.vue';
+import AppHeader from '@/components/Header.vue';
 import Navbar from '@/components/Navbar.vue';
 import SocialMedia from '@/components/SocialMedia.vue';
 import UpdateNotifier from '@/components/UpdateNotifier.vue';
@@ -31,8 +31,8 @@ export default {
   name: 'GlobalLayout',
   components: {
     Navbar,
-    Footer,
-    Header,
+    AppFooter,
+    AppHeader,
     SocialMedia,
     UpdateNotifier,
   },

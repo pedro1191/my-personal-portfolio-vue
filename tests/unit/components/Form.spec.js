@@ -51,11 +51,11 @@ describe('Form.vue', () => {
       expect(formGroupLabel[i].text()).toBe(formGroups[key].label);
       if (key === 'submit') {
         expect(formGroups[key].element.text()).toBe(
-          formGroups[key].description
+          formGroups[key].description,
         );
       } else {
         expect(formGroups[key].element.attributes('placeholder')).toBe(
-          formGroups[key].description
+          formGroups[key].description,
         );
       }
       if (formGroups[key].disabled) {
@@ -64,7 +64,7 @@ describe('Form.vue', () => {
         expect(formGroups[key].element.attributes('disabled')).toBeUndefined();
       }
       expect(formGroupValidationMessage[i].text()).toBe(
-        formGroups[key].validationMessage
+        formGroups[key].validationMessage,
       );
       i++;
     }

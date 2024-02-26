@@ -76,7 +76,7 @@ describe('GlobalLayout.vue', () => {
 
     cy.wait('@projects').then((interception) => {
       expect(interception.response.body.data.length).to.be.equal(
-        mockedReturnData.body.data.length
+        mockedReturnData.body.data.length,
       );
     });
 
@@ -123,7 +123,7 @@ describe('GlobalLayout.vue', () => {
 
     cy.wait('@messages').then((interception) => {
       expect(interception.response.body.message).to.be.equal(
-        mockedReturnData.body.message
+        mockedReturnData.body.message,
       );
     });
 

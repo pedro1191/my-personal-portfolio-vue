@@ -49,10 +49,10 @@ describe('Section.vue', () => {
 
     // ASSERT
     expect(wrapper.attributes('style')).toBe(
-      `color: ${customStyle.wrapper.color};`
+      `color: ${customStyle.wrapper.color};`,
     );
     expect(titleWrapper.attributes('style')).toBe(
-      `color: ${customStyle.title.wrapper.color};`
+      `color: ${customStyle.title.wrapper.color};`,
     );
   });
 
