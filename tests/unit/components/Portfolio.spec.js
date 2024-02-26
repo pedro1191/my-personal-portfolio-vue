@@ -65,10 +65,10 @@ describe('Portfolio.vue', () => {
       await buttons[i].trigger('click');
 
       const liveDemoLink = wrapper.get(
-        `[href="${projects[i].live_demo_link}"]`
+        `[href="${projects[i].live_demo_link}"]`,
       );
       const sourceCodeLink = wrapper.get(
-        `[href="${projects[i].source_code_link}"]`
+        `[href="${projects[i].source_code_link}"]`,
       );
 
       expect(liveDemoLink.text()).toBe('Live Demo');

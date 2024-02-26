@@ -40,7 +40,7 @@ describe('SocialMedia.vue', () => {
       const icon = anchor.find('svg');
       const expectedIconClasses = `${socialMedia[index].iconClasses.replace(
         'fa-brands',
-        ''
+        '',
       )} fa-${socialMedia[index].iconSize}`;
       expect(icon.attributes('class')).toContain(expectedIconClasses);
       expect(icon.text()).toBe(socialMedia[index].name);

@@ -1,19 +1,19 @@
 <template>
   <section class="section" :style="getWrapperStyle">
     <div class="container">
-      <Title :title="title" :customStyle="getTitleStyle" v-if="title" />
+      <AppTitle :title="title" :customStyle="getTitleStyle" v-if="title" />
       <slot></slot>
     </div>
   </section>
 </template>
 
 <script>
-import Title from '@/components/Title.vue';
+import AppTitle from '@/components/Title.vue';
 
 export default {
   name: 'AppSection',
   components: {
-    Title,
+    AppTitle,
   },
   props: {
     title: String,

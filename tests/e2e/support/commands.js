@@ -30,6 +30,6 @@ Cypress.Commands.add('interceptAPICall', (method, url, returnData) => {
       method,
       url: `${Cypress.env('VUE_APP_DEFAULT_BACKEND_API_URL')}/${url}`,
     },
-    returnData
+    returnData,
   ).as(url);
 });

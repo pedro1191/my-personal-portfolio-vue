@@ -96,7 +96,7 @@ export default {
     updateNavLinkClass() {
       this.navLinks.forEach((navLink) => {
         const element = document.querySelector(
-          `[ href*="${navLink.link.hash}" ]`
+          `[ href*="${navLink.link.hash}" ]`,
         );
 
         if (this.isInViewport(navLink.reference_id)) {

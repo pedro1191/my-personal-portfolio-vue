@@ -3,7 +3,7 @@
     :customContentStyle="{ backgroundColor: '#fff' }"
     @close="$emit('projectClosed')"
   >
-    <Section class="no-padding-top" :title="project.name">
+    <AppSection class="no-padding-top" :title="project.name">
       <div class="project-links">
         <a
           class="btn btn-success"
@@ -29,19 +29,19 @@
         :src="project.image"
         :alt="project.name"
       />
-    </Section>
+    </AppSection>
   </ProjectDetailsModal>
 </template>
 
 <script>
 import ProjectDetailsModal from '@/components/ProjectDetailsModal.vue';
-import Section from '@/components/Section.vue';
+import AppSection from '@/components/Section.vue';
 
 export default {
   name: 'AppProjectDetails',
   components: {
     ProjectDetailsModal,
-    Section,
+    AppSection,
   },
   props: {
     project: {
