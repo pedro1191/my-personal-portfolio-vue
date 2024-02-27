@@ -9,14 +9,14 @@ describe('Home.vue', () => {
 
   beforeEach(() => {
     vi.clearAllMocks();
-    const numberOfItems = faker.datatype.number({ min: 1, max: 2 });
+    const numberOfItems = faker.number.int({ min: 1, max: 2 });
     const projects = [];
     for (let i = 0; i < numberOfItems; i++) {
       projects.push({
-        id: faker.datatype.uuid(),
+        id: faker.string.uuid(),
         description: faker.lorem.sentence(),
         name: faker.lorem.words(),
-        image: faker.image.imageUrl(),
+        image: faker.image.url(),
         live_demo_link: faker.internet.url(),
         source_code_link: faker.internet.url(),
       });
@@ -69,7 +69,7 @@ describe('Home.vue', () => {
     const nameInput = form.get('[placeholder="Name *"');
     const emailInput = form.get('[placeholder="Email *"');
     const messageInput = form.get('[placeholder="Message *"');
-    const nameValue = faker.name.fullName();
+    const nameValue = faker.person.fullName();
     const emailValue = faker.internet.email();
     const messageValue = faker.lorem.paragraphs();
     const messageData = {

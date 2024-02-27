@@ -11,7 +11,7 @@ describe('ProjectDetails.vue', () => {
     const project = {
       name: faker.lorem.words(),
       description: faker.lorem.sentence(),
-      image: faker.image.imageUrl(),
+      image: faker.image.url(),
       live_demo_link: faker.internet.url(),
       source_code_link: faker.internet.url(),
     };
@@ -41,7 +41,7 @@ describe('ProjectDetails.vue', () => {
     const project = {
       name: faker.lorem.words(),
       description: faker.lorem.sentence(),
-      image: faker.image.imageUrl(),
+      image: faker.image.url(),
       live_demo_link: faker.internet.url(),
       source_code_link: faker.internet.url(),
     };

@@ -6,14 +6,14 @@ import Portfolio from '@/components/Portfolio.vue';
 describe('Portfolio.vue', () => {
   it('renders props.projects when passed', () => {
     // ARRANGE
-    const numberOfItems = faker.datatype.number({ min: 1, max: 2 });
+    const numberOfItems = faker.number.int({ min: 1, max: 2 });
     const projects = [];
     for (let i = 0; i < numberOfItems; i++) {
       projects.push({
-        id: faker.datatype.uuid(),
+        id: faker.string.uuid(),
         description: faker.lorem.sentence(),
         name: faker.lorem.words(),
-        image: faker.image.imageUrl(),
+        image: faker.image.url(),
         live_demo_link: faker.internet.url(),
         source_code_link: faker.internet.url(),
       });
@@ -38,14 +38,14 @@ describe('Portfolio.vue', () => {
 
   it('loads the correct data when the project is clicked', async () => {
     // ARRANGE
-    const numberOfItems = faker.datatype.number({ min: 1, max: 2 });
+    const numberOfItems = faker.number.int({ min: 1, max: 2 });
     const projects = [];
     for (let i = 0; i < numberOfItems; i++) {
       projects.push({
-        id: faker.datatype.uuid(),
+        id: faker.string.uuid(),
         description: faker.lorem.sentence(),
         name: faker.lorem.words(),
-        image: faker.image.imageUrl(),
+        image: faker.image.url(),
         live_demo_link: faker.internet.url(),
         source_code_link: faker.internet.url(),
       });

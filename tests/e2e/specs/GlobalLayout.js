@@ -55,12 +55,12 @@ describe('GlobalLayout.vue', () => {
         data: [
           {
             description: faker.lorem.paragraph(),
-            id: faker.datatype.uuid(),
-            image: faker.image.dataUri(),
+            id: faker.string.uuid(),
+            image: faker.image.url(),
             link: faker.internet.url(),
             live_demo_link: faker.internet.url(),
             name: faker.lorem.words(),
-            order: faker.datatype.number(),
+            order: faker.number.int(),
             source_code_link: faker.internet.url(),
           },
         ],
@@ -113,7 +113,7 @@ describe('GlobalLayout.vue', () => {
     cy.visit('/');
 
     cy.get('form').within(() => {
-      cy.get('[placeholder="Name *"]').type(faker.name.fullName());
+      cy.get('[placeholder="Name *"]').type(faker.person.fullName());
       cy.get('[placeholder="Email *"]').type(faker.internet.email());
       cy.get('[placeholder="Message *"]').type(faker.lorem.sentence());
       cy.get('button').should('be.enabled').click();

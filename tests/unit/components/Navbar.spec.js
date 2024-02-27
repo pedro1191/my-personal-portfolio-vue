@@ -25,7 +25,7 @@ describe('Navbar.vue', () => {
 
   it('renders props.navLinks when passed', () => {
     // ARRANGE
-    const numberOfItems = faker.datatype.number({ min: 1, max: 3 });
+    const numberOfItems = faker.number.int({ min: 1, max: 3 });
     const navLinks = [];
     for (let i = 0; i < numberOfItems; i++) {
       navLinks.push({
