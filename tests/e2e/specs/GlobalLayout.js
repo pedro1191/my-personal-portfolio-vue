@@ -113,7 +113,7 @@ describe('GlobalLayout.vue', () => {
     cy.visit('/');
 
     cy.get('form').within(() => {
-      cy.get('[placeholder="Name *"]').type(faker.name.findName());
+      cy.get('[placeholder="Name *"]').type(faker.name.fullName());
       cy.get('[placeholder="Email *"]').type(faker.internet.email());
       cy.get('[placeholder="Message *"]').type(faker.lorem.sentence());
       cy.get('button').should('be.enabled').click();

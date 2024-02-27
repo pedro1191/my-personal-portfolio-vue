@@ -1,5 +1,6 @@
 import { faker } from '@faker-js/faker';
 import { mount } from '@vue/test-utils';
+import { describe, expect, it } from 'vitest';
 import Header from '@/components/Header.vue';
 
 describe('Header.vue', () => {

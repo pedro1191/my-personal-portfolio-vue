@@ -3,6 +3,7 @@ import { faGithub, faLinkedinIn } from '@fortawesome/free-brands-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome';
 import { library } from '@fortawesome/fontawesome-svg-core';
 import { mount } from '@vue/test-utils';
+import { describe, expect, it } from 'vitest';
 import SocialMedia from '@/components/SocialMedia.vue';
 
 library.add(faGithub, faLinkedinIn);

@@ -1,5 +1,6 @@
 import { faker } from '@faker-js/faker';
 import { mount } from '@vue/test-utils';
+import { describe, expect, it } from 'vitest';
 import Divider from '@/components/Divider.vue';
 
 describe('Divider.vue', () => {
