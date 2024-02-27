@@ -1,9 +1,0 @@
-{
-  "baseUrl": "http://localhost:8081",
-  "env": {
-    "VITE_APP_DEFAULT_BACKEND_API_URL": "https://api.pedrohsalmeida.com"
-  },
-  "pluginsFile": "tests/e2e/plugins/index.js",
-  "projectId": "ppii7n",
-  "videoUploadOnPasses": false
-}

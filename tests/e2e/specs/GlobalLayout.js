@@ -13,10 +13,12 @@ describe('GlobalLayout.vue', () => {
       cy.contains('a', 'CONTACT');
     });
 
-    cy.get('header').within(() => {
-      cy.contains('h1', 'Pedro de Almeida');
-      cy.contains('h2', 'Full Stack Web Developer');
-    });
+    cy.get('header')
+      .first()
+      .within(() => {
+        cy.contains('h1', 'Pedro de Almeida');
+        cy.contains('h2', 'Full Stack Web Developer');
+      });
 
     cy.get('#portfolio').within(() => {
       cy.contains('h1', 'PORTFOLIO');
@@ -76,7 +78,7 @@ describe('GlobalLayout.vue', () => {
 
     cy.wait('@projects').then((interception) => {
       expect(interception.response.body.data.length).to.be.equal(
-        mockedReturnData.body.data.length,
+        mockedReturnData.body.data.length
       );
     });
 
@@ -123,7 +125,7 @@ describe('GlobalLayout.vue', () => {
 
     cy.wait('@messages').then((interception) => {
       expect(interception.response.body.message).to.be.equal(
-        mockedReturnData.body.message,
+        mockedReturnData.body.message
       );
     });
 
