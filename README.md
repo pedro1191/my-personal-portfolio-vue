@@ -30,8 +30,7 @@ npm install
 cp .env.example .env.local
 ```
 
-- **PORT**: optional. The port in which the application should run
-- **VUE_APP_DEFAULT_BACKEND_API_URL**: mandatory. It should point to a running instance of the [REST API](https://github.com/pedro1191/my-personal-portfolio-rest) it consumes
+- **VITE_APP_DEFAULT_BACKEND_API_URL**: mandatory. It should point to a running instance of the [REST API](https://github.com/pedro1191/my-personal-portfolio-rest) it consumes
 
 ### Compiles and hot-reloads for development
 ```

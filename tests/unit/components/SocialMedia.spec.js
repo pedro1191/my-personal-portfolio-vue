@@ -3,6 +3,7 @@ import { faGithub, faLinkedinIn } from '@fortawesome/free-brands-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome';
 import { library } from '@fortawesome/fontawesome-svg-core';
 import { mount } from '@vue/test-utils';
+import { describe, expect, it } from 'vitest';
 import SocialMedia from '@/components/SocialMedia.vue';
 
 library.add(faGithub, faLinkedinIn);
@@ -11,14 +12,14 @@ describe('SocialMedia.vue', () => {
   it('renders props.socialMedia when passed', () => {
     // ARRANGE
     const iconClasses = ['fa-brands fa-linkedin-in', 'fa-brands fa-github'];
-    const numberOfItems = faker.datatype.number({ min: 1, max: 2 });
+    const numberOfItems = faker.number.int({ min: 1, max: 2 });
     const socialMedia = [];
     for (let i = 0; i < numberOfItems; i++) {
       socialMedia.push({
         anchorClasses: faker.lorem.words(),
         name: faker.lorem.words(),
         iconClasses: iconClasses[i],
-        iconSize: `${faker.datatype.number({ min: 1, max: 3 })}x`,
+        iconSize: `${faker.number.int({ min: 1, max: 3 })}x`,
         link: faker.internet.url(),
       });
     }

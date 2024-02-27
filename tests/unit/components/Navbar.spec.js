@@ -1,5 +1,6 @@
 import { faker } from '@faker-js/faker';
 import { mount } from '@vue/test-utils';
+import { describe, expect, it } from 'vitest';
 import { RouterLinkStub } from '@vue/test-utils';
 import Navbar from '@/components/Navbar.vue';
 
@@ -24,7 +25,7 @@ describe('Navbar.vue', () => {
 
   it('renders props.navLinks when passed', () => {
     // ARRANGE
-    const numberOfItems = faker.datatype.number({ min: 1, max: 3 });
+    const numberOfItems = faker.number.int({ min: 1, max: 3 });
     const navLinks = [];
     for (let i = 0; i < numberOfItems; i++) {
       navLinks.push({

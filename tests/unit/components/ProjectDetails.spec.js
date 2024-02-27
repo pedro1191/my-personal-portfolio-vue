@@ -1,6 +1,7 @@
 import { faker } from '@faker-js/faker';
 import { mount } from '@vue/test-utils';
 import { nextTick } from 'vue';
+import { describe, expect, it } from 'vitest';
 import { TIMEOUT_MS } from '@/mixins/modal';
 import ProjectDetails from '@/components/ProjectDetails.vue';
 
@@ -10,7 +11,7 @@ describe('ProjectDetails.vue', () => {
     const project = {
       name: faker.lorem.words(),
       description: faker.lorem.sentence(),
-      image: faker.image.imageUrl(),
+      image: faker.image.url(),
       live_demo_link: faker.internet.url(),
       source_code_link: faker.internet.url(),
     };
@@ -40,7 +41,7 @@ describe('ProjectDetails.vue', () => {
     const project = {
       name: faker.lorem.words(),
       description: faker.lorem.sentence(),
-      image: faker.image.imageUrl(),
+      image: faker.image.url(),
       live_demo_link: faker.internet.url(),
       source_code_link: faker.internet.url(),
     };

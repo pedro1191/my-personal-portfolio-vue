@@ -1,6 +1,7 @@
 import { faker } from '@faker-js/faker';
 import { mount } from '@vue/test-utils';
 import { nextTick } from 'vue';
+import { describe, expect, it } from 'vitest';
 import { TIMEOUT_MS } from '@/mixins/modal';
 import FeedbackMessageModal from '@/components/FeedbackMessageModal.vue';
 

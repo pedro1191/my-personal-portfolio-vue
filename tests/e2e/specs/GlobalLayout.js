@@ -13,10 +13,12 @@ describe('GlobalLayout.vue', () => {
       cy.contains('a', 'CONTACT');
     });
 
-    cy.get('header').within(() => {
-      cy.contains('h1', 'Pedro de Almeida');
-      cy.contains('h2', 'Full Stack Web Developer');
-    });
+    cy.get('header')
+      .first()
+      .within(() => {
+        cy.contains('h1', 'Pedro de Almeida');
+        cy.contains('h2', 'Full Stack Web Developer');
+      });
 
     cy.get('#portfolio').within(() => {
       cy.contains('h1', 'PORTFOLIO');
@@ -55,12 +57,12 @@ describe('GlobalLayout.vue', () => {
         data: [
           {
             description: faker.lorem.paragraph(),
-            id: faker.datatype.uuid(),
-            image: faker.image.dataUri(),
+            id: faker.string.uuid(),
+            image: faker.image.url(),
             link: faker.internet.url(),
             live_demo_link: faker.internet.url(),
             name: faker.lorem.words(),
-            order: faker.datatype.number(),
+            order: faker.number.int(),
             source_code_link: faker.internet.url(),
           },
         ],
@@ -76,7 +78,7 @@ describe('GlobalLayout.vue', () => {
 
     cy.wait('@projects').then((interception) => {
       expect(interception.response.body.data.length).to.be.equal(
-        mockedReturnData.body.data.length,
+        mockedReturnData.body.data.length
       );
     });
 
@@ -113,7 +115,7 @@ describe('GlobalLayout.vue', () => {
     cy.visit('/');
 
     cy.get('form').within(() => {
-      cy.get('[placeholder="Name *"]').type(faker.name.findName());
+      cy.get('[placeholder="Name *"]').type(faker.person.fullName());
       cy.get('[placeholder="Email *"]').type(faker.internet.email());
       cy.get('[placeholder="Message *"]').type(faker.lorem.sentence());
       cy.get('button').should('be.enabled').click();
@@ -123,7 +125,7 @@ describe('GlobalLayout.vue', () => {
 
     cy.wait('@messages').then((interception) => {
       expect(interception.response.body.message).to.be.equal(
-        mockedReturnData.body.message,
+        mockedReturnData.body.message
       );
     });
 

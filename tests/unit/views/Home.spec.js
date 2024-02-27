@@ -1,5 +1,6 @@
 import { faker } from '@faker-js/faker';
 import { flushPromises, mount } from '@vue/test-utils';
+import { beforeEach, describe, expect, it, vi } from 'vitest';
 import axios from '@/axios-default';
 import Home from '@/views/Home.vue';
 
@@ -7,15 +8,15 @@ describe('Home.vue', () => {
   let mockProjectList;
 
   beforeEach(() => {
-    jest.clearAllMocks();
-    const numberOfItems = faker.datatype.number({ min: 1, max: 2 });
+    vi.clearAllMocks();
+    const numberOfItems = faker.number.int({ min: 1, max: 2 });
     const projects = [];
     for (let i = 0; i < numberOfItems; i++) {
       projects.push({
-        id: faker.datatype.uuid(),
+        id: faker.string.uuid(),
         description: faker.lorem.sentence(),
         name: faker.lorem.words(),
-        image: faker.image.imageUrl(),
+        image: faker.image.url(),
         live_demo_link: faker.internet.url(),
         source_code_link: faker.internet.url(),
       });
@@ -28,7 +29,7 @@ describe('Home.vue', () => {
   it('renders properly', async () => {
     // ARRANGE
     const sectionTitles = ['PORTFOLIO', 'ABOUT', 'CONTACT'];
-    jest.spyOn(axios, 'get').mockResolvedValue(mockProjectList);
+    vi.spyOn(axios, 'get').mockResolvedValue(mockProjectList);
     const wrapper = mount(Home, {
       global: {
         stubs: ['FontAwesomeIcon'],
@@ -55,8 +56,8 @@ describe('Home.vue', () => {
     const mockFeedbackMessage = {
       data: { message: faker.lorem.sentence() },
     };
-    jest.spyOn(axios, 'get').mockResolvedValue(mockProjectList);
-    jest.spyOn(axios, 'post').mockResolvedValue(mockFeedbackMessage);
+    vi.spyOn(axios, 'get').mockResolvedValue(mockProjectList);
+    vi.spyOn(axios, 'post').mockResolvedValue(mockFeedbackMessage);
     const wrapper = mount(Home, {
       global: {
         stubs: ['FontAwesomeIcon'],
@@ -68,7 +69,7 @@ describe('Home.vue', () => {
     const nameInput = form.get('[placeholder="Name *"');
     const emailInput = form.get('[placeholder="Email *"');
     const messageInput = form.get('[placeholder="Message *"');
-    const nameValue = faker.name.findName();
+    const nameValue = faker.person.fullName();
     const emailValue = faker.internet.email();
     const messageValue = faker.lorem.paragraphs();
     const messageData = {

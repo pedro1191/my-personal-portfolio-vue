@@ -1,14 +1,15 @@
 import { faker } from '@faker-js/faker';
 import { mount } from '@vue/test-utils';
+import { describe, expect, it } from 'vitest';
 import Project from '@/components/Project.vue';
 
 describe('Project.vue', () => {
   it('renders props.project when passed', () => {
     // ARRANGE
     const project = {
-      id: faker.datatype.uuid(),
+      id: faker.string.uuid(),
       name: faker.lorem.words(),
-      image: faker.image.imageUrl(),
+      image: faker.image.url(),
     };
     const wrapper = mount(Project, {
       global: {
@@ -28,9 +29,9 @@ describe('Project.vue', () => {
   it('emits the projectOpened event when the open button is clicked', async () => {
     // ARRANGE
     const project = {
-      id: faker.datatype.uuid(),
+      id: faker.string.uuid(),
       name: faker.lorem.words(),
-      image: faker.image.imageUrl(),
+      image: faker.image.url(),
     };
     const wrapper = mount(Project, {
       global: {
