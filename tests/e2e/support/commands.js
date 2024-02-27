@@ -28,7 +28,7 @@ Cypress.Commands.add('interceptAPICall', (method, url, returnData) => {
   cy.intercept(
     {
       method,
-      url: `${Cypress.env('VUE_APP_DEFAULT_BACKEND_API_URL')}/${url}`,
+      url: `${Cypress.env('VITE_APP_DEFAULT_BACKEND_API_URL')}/${url}`,
     },
     returnData,
   ).as(url);
