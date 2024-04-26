@@ -36,12 +36,7 @@ export default {
 
 <style scoped>
 .section {
-  padding-top: 3rem;
-  padding-bottom: 3rem;
-  background-color: inherit;
-}
-
-.section div {
-  background-color: inherit;
+  /* padding-top: 3rem; */
+  /* padding-bottom: 3rem; */
 }
 </style>

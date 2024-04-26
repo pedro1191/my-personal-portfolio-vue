@@ -1,5 +1,5 @@
 <template>
-  <div class="row">
+  <div class="portfolio row flex-column">
     <Project
       v-for="(project, index) in projects"
       :key="index"
@@ -52,3 +52,9 @@ export default {
   },
 };
 </script>
+
+<style scoped>
+.portfolio {
+  gap: 1rem;
+}
+</style>

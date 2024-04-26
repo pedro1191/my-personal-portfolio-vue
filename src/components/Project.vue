@@ -1,16 +1,52 @@
 <template>
-  <div class="col-md-6 col-lg-4 my-2">
-    <button
-      class="portfolio-item"
-      :style="{ borderColor: randomBackgroundColor }"
-      title="See Details"
-      @click="$emit('projectOpened', project.id)"
-    >
-      <div class="portfolio-item-caption">
-        <font-awesome-icon class="text-white" icon="fa-search-plus" size="3x" />
+  <div class="project col d-flex">
+    <div class="row project-card py-3">
+      <div class="col-4 thumbnail align-self-start">
+        <div class="portfolio-item">
+          <img class="img-fluid" :src="project.image" :alt="project.name" />
+        </div>
+        <!-- <button
+          class="portfolio-item"
+          :style="{ borderColor: randomBackgroundColor }"
+          title="See Details"
+          @click="$emit('projectOpened', project.id)"
+        >
+          <div class="portfolio-item-caption">
+            <font-awesome-icon
+              class="text-white"
+              icon="fa-search-plus"
+              size="3x"
+            />
+          </div>
+          <img class="img-fluid" :src="project.image" :alt="project.name" />
+        </button> -->
       </div>
-      <img class="img-fluid" :src="project.image" :alt="project.name" />
-    </button>
+      <div class="col-8 description">
+        <h4>{{ project.name }}</h4>
+        <div id="description" v-html="project.description"></div>
+        <div class="project-links">
+          <a
+            class="btn btn-link"
+            target="_blank"
+            rel="noreferrer noopener"
+            :href="project.live_demo_link"
+            v-if="project.live_demo_link"
+          >
+            <span class="mr-1">Live Demo</span>
+            <font-awesome-icon icon="fa-eye" />
+          </a>
+          <a
+            class="btn btn-link"
+            target="_blank"
+            rel="noreferrer noopener"
+            :href="project.source_code_link"
+          >
+            <span class="mr-1">Source Code</span>
+            <font-awesome-icon icon="fa-code" />
+          </a>
+        </div>
+      </div>
+    </div>
   </div>
 </template>
 
@@ -34,6 +70,15 @@ export default {
 </script>
 
 <style scoped>
+.project {
+  gap: 1rem;
+}
+
+.project-card:hover {
+  background-color: var(--secondary20);
+  border-radius: var(--border-radius);
+}
+
 .portfolio-item {
   display: block;
   position: relative;
@@ -41,8 +86,8 @@ export default {
   outline: none;
   border: none;
   padding: 0;
-  border-width: 0.5rem;
-  border-style: double;
+  border-width: var(--border-width-thick);
+  border-style: solid;
   width: 100%;
   height: 100%;
 }

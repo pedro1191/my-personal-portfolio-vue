@@ -31,15 +31,29 @@ export default {
         once: true,
       });
 
-      navigator.serviceWorker.addEventListener('controllerchange', () => {
-        if (!this.refreshing) {
-          this.refreshing = true;
-          window.location.reload();
-        }
-      });
+      navigator.serviceWorker.addEventListener(
+        'controllerchange',
+        this.onControllerChange,
+      );
+    }
+  },
+  beforeUnmount() {
+    if ('serviceWorker' in navigator) {
+      document.removeEventListener('swUpdated', this.showNotification);
+
+      navigator.serviceWorker.removeEventListener(
+        'controllerchange',
+        this.onControllerChange,
+      );
     }
   },
   methods: {
+    onControllerChange() {
+      if (!this.refreshing) {
+        this.refreshing = true;
+        window.location.reload();
+      }
+    },
     showNotification(event) {
       this.registration = event.detail;
       this.updateExists = true;

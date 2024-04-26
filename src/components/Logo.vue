@@ -20,7 +20,8 @@ export default {
 
 <style scoped>
 .default {
-  background-color: #e3f2fd;
+  border: 1px solid var(--secondary);
+  background-color: var(--background-with-transparency);
   border-radius: 50%;
 }
 </style>

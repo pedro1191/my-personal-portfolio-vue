@@ -8,6 +8,7 @@ import {
   faStarOfLife,
   faTimes,
 } from '@fortawesome/free-solid-svg-icons';
+import { faMoon, faSun } from '@fortawesome/free-regular-svg-icons';
 import { faGithub, faLinkedinIn } from '@fortawesome/free-brands-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome';
 import { library } from '@fortawesome/fontawesome-svg-core';
@@ -23,9 +24,11 @@ library.add(
   faEye,
   faGithub,
   faLinkedinIn,
+  faMoon,
   faSearchPlus,
   faSpinner,
   faStarOfLife,
+  faSun,
   faTimes,
 );
 

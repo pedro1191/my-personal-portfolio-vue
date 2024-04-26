@@ -1,8 +1,16 @@
 import { mount } from '@vue/test-utils';
-import { describe, expect, it } from 'vitest';
+import { afterEach, beforeEach, describe, expect, it, vi } from 'vitest';
 import GlobalLayout from '@/views/GlobalLayout.vue';
 
 describe('GlobalLayout.vue', () => {
+  beforeEach(() => {
+    vi.mock('@/composables/theme.js');
+  });
+
+  afterEach(() => {
+    vi.resetAllMocks();
+  });
+
   it('renders properly', () => {
     // ARRANGE
     const wrapper = mount(GlobalLayout, {

@@ -14,13 +14,3 @@ export default {
   },
 };
 </script>
-
-<style scoped>
-.header {
-  background-color: inherit;
-  padding-top: 3rem;
-  padding-bottom: 3rem;
-  color: #fff;
-  text-align: center;
-}
-</style>

@@ -1,23 +1,29 @@
 <template>
   <div class="title" :style="getWrapperStyle" data-test="title-wrapper">
-    <h1 :style="getTitleStyle" data-test="title-text">{{ title }}</h1>
-    <Divider :customStyle="getDividerStyle" />
+    <component
+      :is="isSecondary ? 'h2' : 'h1'"
+      :style="getTitleStyle"
+      data-test="title-text"
+      >{{ title }}</component
+    >
+    <!-- <Divider :customStyle="getDividerStyle" /> -->
   </div>
 </template>
 
 <script>
-import Divider from '@/components/Divider.vue';
+// import Divider from '@/components/Divider.vue';
 
 export default {
   name: 'AppTitle',
   components: {
-    Divider,
+    // Divider,
   },
   props: {
     title: {
       type: String,
       required: true,
     },
+    isSecondary: Boolean,
     customStyle: Object,
   },
   computed: {

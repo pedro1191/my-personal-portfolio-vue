@@ -1,9 +1,9 @@
 <template>
   <div class="d-flex flex-column h-100">
     <Navbar :navLinks="navLinks" />
-    <router-view class="router-view" />
+    <router-view class="container router-view" />
     <AppFooter>
-      <AppHeader class="bg-dark text-muted">
+      <!-- <AppHeader class="bg-dark text-muted">
         <div class="row">
           <div class="col-md-6 my-3">
             <h4 class="mb-4">LOCATION</h4>
@@ -14,7 +14,7 @@
             <SocialMedia :socialMedia="socialMedia" />
           </div>
         </div>
-      </AppHeader>
+      </AppHeader> -->
     </AppFooter>
   </div>
   <UpdateNotifier></UpdateNotifier>
@@ -41,17 +41,17 @@ export default {
       navLinks: [
         {
           reference_id: 'portfolio',
-          name: 'PORTFOLIO',
+          name: 'Projects',
           link: { name: 'home', hash: '#portfolio' },
         },
         {
           reference_id: 'about',
-          name: 'ABOUT',
+          name: 'About',
           link: { name: 'home', hash: '#about' },
         },
         {
           reference_id: 'contact',
-          name: 'CONTACT',
+          name: 'Contact',
           link: { name: 'home', hash: '#contact' },
         },
       ],
@@ -76,7 +76,7 @@ export default {
 
 <style scoped>
 .router-view {
-  padding-top: 74px;
-  /* because it is the height of the fixed navbar */
+  padding-top: var(--navbar-height);
+  flex: 1;
 }
 </style>
