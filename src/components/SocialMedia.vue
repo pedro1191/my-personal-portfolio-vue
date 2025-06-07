@@ -33,18 +33,18 @@ export default {
   display: flex;
   align-content: center;
   align-items: center;
-  justify-content: center;
+  justify-content: flex-start;
+  gap: 1rem;
 }
 
 .social-media a {
   text-decoration: none;
   color: inherit;
-  margin: 0 0.5rem;
-  color: #6c757d;
+  color: var(--accent);
 }
 
 .social-media a:hover,
 .social-media a:active {
-  color: #fff;
+  color: var(--text-color);
 }
 </style>
