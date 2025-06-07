@@ -10,6 +10,9 @@ describe('ThemeToggle.vue', () => {
       theme: Theme.Light,
     };
     const wrapper = mount(ThemeToggle, {
+      global: {
+        stubs: ['FontAwesomeIcon'],
+      },
       props,
     });
 
@@ -26,6 +29,9 @@ describe('ThemeToggle.vue', () => {
   it('emits the toggleTheme event when the button is pressed', () => {
     // ARRANGE
     const wrapper = mount(ThemeToggle, {
+      global: {
+        stubs: ['FontAwesomeIcon'],
+      },
       props: {
         theme: Theme.Dark,
       },
