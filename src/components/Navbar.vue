@@ -1,6 +1,6 @@
 <template>
   <nav
-    class="navbar navbar-expand-md fixed-top navbar-dark bg-dark"
+    class="navbar navbar-expand-md fixed-top"
     :class="{ 'navbar-shrink': !scrollOnTop }"
   >
     <div class="container">
@@ -18,7 +18,7 @@
         :class="{ collapsed: !openMenu }"
         @click="onNavbarTogglerClick"
       >
-        {{ togglerTitle }}<font-awesome-icon class="ml-2" icon="fa-bars" />
+        {{ menuTogglerTitle }}<font-awesome-icon class="ml-2" icon="fa-bars" />
       </button>
       <div
         class="collapse navbar-collapse"
@@ -39,6 +39,7 @@
             </router-link>
           </li>
         </ul>
+        <ThemeToggle :theme="theme" @toggleTheme="toggleTheme" />
       </div>
     </div>
   </nav>
@@ -46,14 +47,17 @@
 
 <script>
 import Logo from '@/components/Logo.vue';
+import ThemeToggle from '@/components/ThemeToggle.vue';
+import { useTheme } from '@/composables';
 
 export default {
   name: 'AppNavbar',
   components: {
     Logo,
+    ThemeToggle,
   },
   props: {
-    togglerTitle: {
+    menuTogglerTitle: {
       type: String,
       default: 'Menu',
     },
@@ -61,6 +65,10 @@ export default {
       type: Array,
       required: true,
     },
+  },
+  setup() {
+    const { theme, toggleTheme } = useTheme();
+    return { theme, toggleTheme };
   },
   data() {
     return {
@@ -71,7 +79,7 @@ export default {
   },
   computed: {
     scrollOnTop: function () {
-      return this.scrollYPosition <= 100;
+      return this.scrollYPosition <= 50;
     },
     viewportOffset: function () {
       return 200;
@@ -83,13 +91,17 @@ export default {
     },
   },
   mounted() {
-    window.addEventListener('scroll', () => {
+    window.addEventListener('scroll', this.onScroll);
+  },
+  beforeUnmount() {
+    window.removeEventListener('scroll', this.onScroll);
+  },
+  methods: {
+    onScroll() {
       this.updateScroll();
       clearTimeout(this.scrollTimeout);
       this.scrollTimeout = setTimeout(() => this.updateNavLinkClass(), 125);
-    });
-  },
-  methods: {
+    },
     updateScroll() {
       this.scrollYPosition = window.scrollY;
     },
@@ -130,6 +142,20 @@ export default {
   font-size: 1.5rem;
 }
 
+.navbar {
+  background: var(--background-with-transparency);
+}
+
+.navbar .navbar-collapse {
+  gap: 0.5rem;
+}
+
+.navbar-nav .nav-link {
+  color: var(--text-color);
+  border-bottom: 2px solid transparent;
+  transition: all var(--transition-fast) ease-in-out;
+}
+
 .navbar.navbar-shrink {
   padding-top: 0.5rem;
   padding-bottom: 0.5rem;
@@ -145,15 +171,20 @@ export default {
   .navbar {
     padding-top: 1rem;
     padding-bottom: 1rem;
+    border-bottom: 1px solid var(--border-color);
+  }
+
+  .navbar-expand-md .navbar-nav {
+    gap: 0.5rem;
   }
 
   .app-logo {
     height: 4rem;
   }
 
+  .navbar-nav .nav-link:hover,
   .navbar-nav .active > .nav-link {
-    color: #fff;
-    background-color: #17a2b8;
+    border-bottom: 2px solid var(--text-color);
   }
 }
 </style>
