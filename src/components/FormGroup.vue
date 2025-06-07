@@ -1,5 +1,5 @@
 <template>
-  <div class="form-group mb-0 py-2">
+  <div class="form-group">
     <label
       class="label"
       :class="{
