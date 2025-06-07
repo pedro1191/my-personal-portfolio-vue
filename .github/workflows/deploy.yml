@@ -13,18 +13,23 @@ jobs:
       env:
         CONTAINER: my-personal-portfolio-front
         IMAGE: my-personal-portfolio-front
+        PROJECTDIR: my-personal-portfolio-vue
         PORT: 8081
+        REPO: git@github.com:pedro1191/my-personal-portfolio-vue.git
         TAG: latest
-        WORKDIR: portfolio/vue_projects/my-personal-portfolio-vue
+        WORKDIR: portfolio/vue_projects
       with:
         host: ${{ secrets.HOST }}
         username: ${{ secrets.USERNAME }}
         key: ${{ secrets.KEY }}
         port: ${{ secrets.PORT }}
-        envs: CONTAINER, IMAGE, PORT, TAG, WORKDIR
+        envs: CONTAINER, IMAGE, PROJECTDIR, PORT, REPO, TAG, WORKDIR
         script: |
+          rm -rf $WORKDIR/$PROJECTDIR
+          mkdir -p $WORKDIR
           cd $WORKDIR
-          git pull
+          git clone $REPO
+          cd $PROJECTDIR
           docker build -t $IMAGE:$TAG .
           docker stop $CONTAINER
           docker rm $CONTAINER
