@@ -15,7 +15,7 @@ import App from './App.vue';
 import './registerServiceWorker';
 import router from './router';
 import store from './store';
-import VueGtag from 'vue-gtag';
+import { configure } from 'vue-gtag';
 
 library.add(
   faBars,
@@ -29,11 +29,12 @@ library.add(
   faTimes,
 );
 
+configure({
+  tagId: 'G-624GF25M5K',
+});
+
 createApp(App)
   .component('font-awesome-icon', FontAwesomeIcon)
   .use(store)
   .use(router)
-  .use(VueGtag, {
-    config: { id: 'G-624GF25M5K' },
-  })
   .mount('#app');

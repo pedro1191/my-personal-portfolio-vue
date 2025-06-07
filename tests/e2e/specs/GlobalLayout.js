@@ -3,7 +3,28 @@
 import { faker } from '@faker-js/faker';
 
 describe('GlobalLayout.vue', () => {
+  const mockedReturnData = {
+    body: {
+      data: [
+        {
+          description: faker.lorem.paragraph(),
+          id: faker.string.uuid(),
+          image: faker.image.url(),
+          link: faker.internet.url(),
+          live_demo_link: faker.internet.url(),
+          name: faker.lorem.words(),
+          order: faker.number.int(),
+          source_code_link: faker.internet.url(),
+        },
+      ],
+    },
+    statusCode: 200,
+    delay: 500,
+  };
+
   it('Loads the home page content', () => {
+    cy.interceptAPICall('GET', 'projects', mockedReturnData);
+
     cy.visit('/');
 
     cy.get('nav').within(() => {
@@ -19,6 +40,16 @@ describe('GlobalLayout.vue', () => {
         cy.contains('h1', 'Pedro de Almeida');
         cy.contains('h2', 'Full Stack Web Developer');
       });
+
+    cy.get('.loader').should('be.visible');
+
+    cy.wait('@projects').then((interception) => {
+      expect(interception.response.body.data.length).to.be.equal(
+        mockedReturnData.body.data.length
+      );
+    });
+
+    cy.get('.loader').should('not.exist');
 
     cy.get('#portfolio').within(() => {
       cy.contains('h1', 'PORTFOLIO');
@@ -52,24 +83,6 @@ describe('GlobalLayout.vue', () => {
   });
 
   it('Opens the details of a project', () => {
-    const mockedReturnData = {
-      body: {
-        data: [
-          {
-            description: faker.lorem.paragraph(),
-            id: faker.string.uuid(),
-            image: faker.image.url(),
-            link: faker.internet.url(),
-            live_demo_link: faker.internet.url(),
-            name: faker.lorem.words(),
-            order: faker.number.int(),
-            source_code_link: faker.internet.url(),
-          },
-        ],
-      },
-      statusCode: 200,
-      delay: 500,
-    };
     cy.interceptAPICall('GET', 'projects', mockedReturnData);
 
     cy.visit('/');
