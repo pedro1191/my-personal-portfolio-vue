@@ -1,61 +1,72 @@
 <template>
   <div class="home">
-    <AppHeader class="bg-info" id="home">
-      <Logo class="img-fluid mb-5 d-block mx-auto" />
-      <AppTitle
-        title="Pedro de Almeida"
-        class="bg-info"
-        :customStyle="appTitleCustomStyle"
-      />
-      <h2 class="font-weight-light">Full Stack Web Developer</h2>
-    </AppHeader>
-
-    <AppSection id="portfolio" class="bg-white" title="PORTFOLIO">
-      <Portfolio :projects="projects" />
-    </AppSection>
-
-    <AppSection id="about" class="bg-info text-white" title="ABOUT">
-      <div class="row">
-        <div class="col-md-6">
-          <p class="lead">
-            I'm a Full Stack Web Developer with 6+ years of experience
-            developing, testing, and maintaining enterprise software
-            applications, often designing and developing from use cases and
-            functional requirements.
-          </p>
-          <p class="lead">
-            My first contact with programming was in 2009, using C language.
-            Learning how to solve problems and "give life" to things was
-            something that amused me from the start.
-          </p>
-        </div>
-        <div class="col-md-6">
-          <p class="lead">
-            I started my career in 2014 and have already worked with different
-            platforms, but it was in Web development that I found my place. I've
-            been working as a Full Stack Developer since the beginning, although
-            I took a "two-year break" to focus on my master's between 2016 and
-            2018.
-          </p>
-          <p class="lead">
-            For more details about my professional experience, please refer to
-            my LinkedIn and GitHub profiles in the footer.
-          </p>
+    <div class="content row py-5">
+      <div class="col-lg-5 d-flex flex-column justify-content-between">
+        <div class="row sticky-section h-100">
+          <div
+            class="header-and-social-media col d-flex flex-column justify-content-between"
+          >
+            <div class="header">
+              <AppTitle title="Pedro de Almeida" />
+              <h2 class="font-weight-light">Full-stack Web Developer</h2>
+              <h6 class="mt-4">Based in Lisbon, Portugal</h6>
+            </div>
+            <SocialMedia :socialMedia="socialMedia" />
+          </div>
         </div>
       </div>
-    </AppSection>
-
-    <AppSection id="contact" class="bg-white" title="CONTACT">
-      <div class="row">
-        <div class="col-lg-8 mx-auto">
-          <AppForm
-            :formGroups="formGroups"
-            @formSubmited="submitForm"
-            @formGroupTouched="onFormGroupTouch($event)"
-          />
+      <div class="col-lg-7">
+        <AppTitle id="portfolio" is-secondary title="Projects" />
+        <Portfolio :projects="projects" />
+        <AppTitle id="about" is-secondary title="About" class="mt-5" />
+        <div class="row">
+          <div class="col">
+            <p>
+              Hey there! I'm a full-stack web developer with
+              {{ yearsOfExperience }}+ years of experience building, testing,
+              and maintaining enterprise software—often starting from just use
+              cases and functional requirements.
+            </p>
+            <p>
+              I got into programming back in 2009 with C, and right away I was
+              hooked on the idea of solving problems and bringing ideas to life
+              through code.
+            </p>
+            <p>
+              Since kicking off my career in 2014, I've worked on all kinds of
+              platforms, but web development is where I truly feel at home. I've
+              been doing full-stack work ever since—aside from a two-year break
+              between 2016 and 2018 to dive into my master's.
+            </p>
+            <p>
+              Feel free to reach out on my
+              <template v-for="(sm, index) in socialMedia" :key="index">
+                {{ getSocialMediaTextPrefix(index) }}
+                <a
+                  :href="sm.link"
+                  :class="sm.anchorClasses"
+                  target="_blank"
+                  rel="noreferrer noopener"
+                >
+                  {{ sm.name }}
+                </a>
+              </template>
+              profiles!
+            </p>
+          </div>
+        </div>
+        <AppTitle id="contact" is-secondary title="Contact" class="mt-5" />
+        <div class="row">
+          <div class="col">
+            <AppForm
+              :formGroups="formGroups"
+              @formSubmited="submitForm"
+              @formGroupTouched="onFormGroupTouch($event)"
+            />
+          </div>
         </div>
       </div>
-    </AppSection>
+    </div>
 
     <FeedbackMessageModal
       v-if="this.modal.error || this.modal.success"
@@ -75,13 +86,12 @@ import useVuelidate from '@vuelidate/core';
 import { helpers, required, email, maxLength } from '@vuelidate/validators';
 import axios from '@/axios-default';
 import AppForm from '@/components/Form.vue';
-import AppHeader from '@/components/Header.vue';
-import Logo from '@/components/Logo.vue';
 import FeedbackMessageModal from '@/components/FeedbackMessageModal.vue';
 import Portfolio from '@/components/Portfolio.vue';
-import AppSection from '@/components/Section.vue';
 import Spinner from '@/components/Spinner.vue';
 import AppTitle from '@/components/Title.vue';
+import SocialMedia from '@/components/SocialMedia.vue';
+import { PROJECT_LIST } from '@/constants';
 
 export default {
   name: 'AppHome',
@@ -89,23 +99,30 @@ export default {
     return { v$: useVuelidate() };
   },
   components: {
-    AppHeader,
-    Logo,
     AppTitle,
-    AppSection,
     Portfolio,
     AppForm,
     FeedbackMessageModal,
     Spinner,
+    SocialMedia,
   },
   data() {
     return {
-      appTitleCustomStyle: {
-        title: {
-          fontSize: '4rem',
+      projects: PROJECT_LIST,
+      socialMedia: [
+        {
+          name: 'LinkedIn',
+          link: 'https://www.linkedin.com/in/phdealmeida/',
+          iconClasses: 'fa-brands fa-linkedin-in',
+          iconSize: '2x',
         },
-      },
-      projects: [],
+        {
+          name: 'GitHub',
+          link: 'https://github.com/pedro1191',
+          iconClasses: 'fa-brands fa-github',
+          iconSize: '2x',
+        },
+      ],
       formGroups: {
         name: {
           label: 'Name *',
@@ -156,6 +173,13 @@ export default {
     isFormValid: function () {
       return this.v$.$invalid;
     },
+    yearsOfExperience: function () {
+      const currentYear = new Date().getFullYear();
+      const careerStart = 2014;
+      const masterDegreeBreak = 2;
+
+      return currentYear - careerStart - masterDegreeBreak;
+    },
   },
   watch: {
     formName: function () {
@@ -170,19 +194,6 @@ export default {
     isFormValid: function (value) {
       this.formGroups.submit.disabled = value;
     },
-  },
-  mounted() {
-    this.modal.loading = true;
-
-    axios
-      .get('/projects')
-      .then((response) => {
-        this.modal.loading = false;
-        this.projects = response.data.data;
-      })
-      .catch((error) => {
-        this.onHttpRequestError(error);
-      });
   },
   methods: {
     async submitForm() {
@@ -255,6 +266,9 @@ export default {
         this.formGroups[key].validationMessage = null;
       }
     },
+    getSocialMediaTextPrefix(index) {
+      return index === 0 ? '' : ' and ';
+    },
   },
   validations() {
     return {
@@ -297,17 +311,17 @@ export default {
 </script>
 
 <style scoped>
-section::before {
-  height: 74px;
-  content: '';
-  display: block;
+.content {
+  row-gap: 4rem;
 }
 
-@media (min-width: 768px) {
-  header#home::before {
-    height: 74px;
-    content: '';
-    display: block;
-  }
+.header-and-social-media {
+  gap: 2rem;
+}
+
+.sticky-section {
+  position: sticky;
+  top: calc(var(--navbar-height) + 3rem);
+  max-height: calc(100vh - var(--navbar-height) - 6rem);
 }
 </style>
