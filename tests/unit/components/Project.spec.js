@@ -62,7 +62,7 @@ describe('Project.vue', () => {
     const text = wrapper.text();
 
     // ASSERT
-    project.chips.forEach(chip => {
+    project.chips.forEach((chip) => {
       expect(text).toContain(chip);
     });
   });

@@ -10,7 +10,7 @@ describe('Chip.vue', () => {
     const wrapper = mount(Chip, {
       props: {
         label,
-      }
+      },
     });
 
     // ACT
