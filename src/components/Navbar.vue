@@ -144,6 +144,7 @@ export default {
 
 .navbar {
   background: var(--background-with-transparency);
+  height: var(--navbar-height);
 }
 
 .navbar .navbar-collapse {
@@ -159,6 +160,7 @@ export default {
 .navbar.navbar-shrink {
   padding-top: 0.5rem;
   padding-bottom: 0.5rem;
+  height: var(--navbar-height-mobile);
 }
 
 .app-logo,
