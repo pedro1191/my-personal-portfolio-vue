@@ -30,9 +30,9 @@ jobs:
           cd $WORKDIR
           git clone $REPO
           cd $PROJECTDIR
-          docker stop $CONTAINER
-          docker rm $CONTAINER
-          docker rmi $IMAGE:$TAG
+          docker stop $CONTAINER || true
+          docker rm $CONTAINER || true
+          docker rmi $IMAGE:$TAG || true
           docker build -t $IMAGE:$TAG .
           docker run -d --restart always --name $CONTAINER -p $PORT:80 $IMAGE:$TAG
           docker system prune -f
