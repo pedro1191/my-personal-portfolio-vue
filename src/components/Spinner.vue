@@ -28,5 +28,7 @@ export default {
   color: #fff;
   align-items: center;
   align-content: center;
+  justify-content: center;
+  width: 100%;
 }
 </style>

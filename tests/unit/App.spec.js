@@ -1,8 +1,16 @@
 import { mount } from '@vue/test-utils';
-import { describe, it } from 'vitest';
+import { afterEach, beforeEach, describe, it, vi } from 'vitest';
 import App from '@/App.vue';
 
 describe('App.vue', () => {
+  beforeEach(() => {
+    vi.mock('@/composables/theme.js');
+  });
+
+  afterEach(() => {
+    vi.resetAllMocks();
+  });
+
   it('renders properly', () => {
     mount(App, {
       global: {

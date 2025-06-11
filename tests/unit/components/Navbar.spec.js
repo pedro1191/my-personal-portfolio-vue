@@ -1,26 +1,34 @@
 import { faker } from '@faker-js/faker';
 import { mount } from '@vue/test-utils';
-import { describe, expect, it } from 'vitest';
+import { afterEach, beforeEach, describe, expect, it, vi } from 'vitest';
 import { RouterLinkStub } from '@vue/test-utils';
 import Navbar from '@/components/Navbar.vue';
 
 describe('Navbar.vue', () => {
-  it('renders props.togglerTitle when passed', () => {
+  beforeEach(() => {
+    vi.mock('@/composables/theme.js');
+  });
+
+  afterEach(() => {
+    vi.resetAllMocks();
+  });
+
+  it('renders props.menuTogglerTitle when passed', () => {
     // ARRANGE
-    const togglerTitle = faker.lorem.words();
+    const menuTogglerTitle = faker.lorem.words();
     const navLinks = [];
     const wrapper = mount(Navbar, {
       global: {
         stubs: ['FontAwesomeIcon', 'RouterLink'],
       },
-      props: { togglerTitle, navLinks },
+      props: { menuTogglerTitle, navLinks },
     });
 
     // ACT
     const wrapperText = wrapper.text();
 
     // ASSERT
-    expect(wrapperText).toMatch(togglerTitle);
+    expect(wrapperText).toMatch(menuTogglerTitle);
   });
 
   it('renders props.navLinks when passed', () => {
@@ -59,5 +67,22 @@ describe('Navbar.vue', () => {
         hash: navLinks[index].link.hash,
       });
     });
+  });
+
+  it('has the toggle theme button', () => {
+    // ARRANGE
+    const navLinks = [];
+    const wrapper = mount(Navbar, {
+      global: {
+        stubs: ['FontAwesomeIcon', 'RouterLink'],
+      },
+      props: { navLinks },
+    });
+
+    // ACT
+    const themeToggleButton = wrapper.get('.theme-toggle');
+
+    // ASSERT
+    expect(themeToggleButton.exists()).toBeTruthy();
   });
 });

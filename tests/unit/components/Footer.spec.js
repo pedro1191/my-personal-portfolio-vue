@@ -1,34 +1,18 @@
-import { faker } from '@faker-js/faker';
 import { mount } from '@vue/test-utils';
 import { describe, expect, it } from 'vitest';
 import Footer from '@/components/Footer.vue';
 
 describe('Footer.vue', () => {
-  it('renders the current year', () => {
+  it('renders the text content', () => {
     // ARRANGE
     const thisYear = new Date().getFullYear().toString();
+    const text = `Pedro de Almeida's Portfolio ${thisYear}`;
     const wrapper = mount(Footer);
 
     // ACT
     const wrapperText = wrapper.text();
 
     // ASSERT
-    expect(wrapperText).toContain(thisYear);
-  });
-
-  it('renders the default slot content', () => {
-    // ARRANGE
-    const content = faker.lorem.words();
-    const wrapper = mount(Footer, {
-      slots: {
-        default: content,
-      },
-    });
-
-    // ACT
-    const wrapperText = wrapper.text();
-
-    // ASSERT
-    expect(wrapperText).toContain(content);
+    expect(wrapperText).toBe(text);
   });
 });

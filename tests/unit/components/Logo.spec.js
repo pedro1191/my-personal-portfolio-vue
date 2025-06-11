@@ -1,23 +1,13 @@
-import { faker } from '@faker-js/faker';
 import { mount } from '@vue/test-utils';
 import { describe, expect, it } from 'vitest';
 import Logo from '@/components/Logo.vue';
 
 describe('Logo.vue', () => {
-  it('renders props.customStyle when passed', () => {
-    // ARRANGE
-    const colorFormat = { format: 'css' };
-    const customStyle = {
-      color: faker.color.rgb(colorFormat),
-    };
-    const wrapper = mount(Logo, {
-      props: { customStyle },
-    });
-
-    // ACT
-    const wrapperStyle = wrapper.attributes('style');
+  it('renders a Logo', () => {
+    // ARRANGE/ACT
+    const wrapper = mount(Logo);
 
     // ASSERT
-    expect(wrapperStyle).toBe(`color: ${customStyle.color};`);
+    expect(wrapper.exists()).toBe(true);
   });
 });

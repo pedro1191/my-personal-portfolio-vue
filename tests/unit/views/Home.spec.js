@@ -1,35 +1,13 @@
 import { faker } from '@faker-js/faker';
 import { flushPromises, mount } from '@vue/test-utils';
-import { beforeEach, describe, expect, it, vi } from 'vitest';
+import { describe, expect, it, vi } from 'vitest';
 import axios from '@/axios-default';
 import Home from '@/views/Home.vue';
 
 describe('Home.vue', () => {
-  let mockProjectList;
-
-  beforeEach(() => {
-    vi.clearAllMocks();
-    const numberOfItems = faker.number.int({ min: 1, max: 2 });
-    const projects = [];
-    for (let i = 0; i < numberOfItems; i++) {
-      projects.push({
-        id: faker.string.uuid(),
-        description: faker.lorem.sentence(),
-        name: faker.lorem.words(),
-        image: faker.image.url(),
-        live_demo_link: faker.internet.url(),
-        source_code_link: faker.internet.url(),
-      });
-    }
-    mockProjectList = {
-      data: { data: projects },
-    };
-  });
-
   it('renders properly', async () => {
     // ARRANGE
-    const sectionTitles = ['PORTFOLIO', 'ABOUT', 'CONTACT'];
-    vi.spyOn(axios, 'get').mockResolvedValue(mockProjectList);
+    const sectionTitles = ['Pedro de Almeida', 'Projects', 'About', 'Contact'];
     const wrapper = mount(Home, {
       global: {
         stubs: ['FontAwesomeIcon'],
@@ -37,18 +15,16 @@ describe('Home.vue', () => {
     });
 
     // ACT
-    const header = wrapper.get('header');
-    const sections = wrapper.findAll('section');
-    await flushPromises();
+    const header = wrapper.get('.header');
+    const sections = wrapper.findAll('.title');
 
     // ASSERT
-    expect(header.html()).toContain('Full Stack Web Developer');
+    expect(header.text()).toContain('Full-stack Web Developer');
+    expect(header.text()).toContain('Based in Lisbon, Portugal');
     expect(sections.length).toBe(sectionTitles.length);
     sections.forEach((section, index) => {
-      expect(section.html()).toContain(sectionTitles[index]);
+      expect(section.text()).toContain(sectionTitles[index]);
     });
-    expect(axios.get).toHaveBeenCalledTimes(1);
-    expect(axios.get).toHaveBeenCalledWith('/projects');
   });
 
   it('sends the contact message properly', async () => {
@@ -56,7 +32,6 @@ describe('Home.vue', () => {
     const mockFeedbackMessage = {
       data: { message: faker.lorem.sentence() },
     };
-    vi.spyOn(axios, 'get').mockResolvedValue(mockProjectList);
     vi.spyOn(axios, 'post').mockResolvedValue(mockFeedbackMessage);
     const wrapper = mount(Home, {
       global: {
