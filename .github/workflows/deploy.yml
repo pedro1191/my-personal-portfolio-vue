@@ -30,7 +30,7 @@ jobs:
           cd $WORKDIR
           git clone $REPO
           cd $PROJECTDIR
-          docker build -t $IMAGE:$TAG .
+          docker build --no-cache -t $IMAGE:$TAG .
           docker stop $CONTAINER
           docker rm $CONTAINER
           docker run -d --restart always --name $CONTAINER -p $PORT:80 $IMAGE:$TAG
