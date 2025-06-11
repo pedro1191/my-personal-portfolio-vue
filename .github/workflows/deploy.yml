@@ -1,6 +1,6 @@
 name: Deployment Workflow
 on:
-  push:
+  pull_request:
     branches: [ master ]
 
 jobs:
@@ -25,6 +25,7 @@ jobs:
         port: ${{ secrets.PORT }}
         envs: CONTAINER, IMAGE, PROJECTDIR, PORT, REPO, TAG, WORKDIR
         script: |
+          set -e
           rm -rf $WORKDIR/$PROJECTDIR
           mkdir -p $WORKDIR
           cd $WORKDIR
@@ -33,6 +34,6 @@ jobs:
           docker stop $CONTAINER || true
           docker rm $CONTAINER || true
           docker rmi $IMAGE:$TAG || true
-          docker build -t $IMAGE:$TAG .
+          docker build --pull --no-cache -t $IMAGE:$TAG .
           docker run -d --restart always --name $CONTAINER -p $PORT:80 $IMAGE:$TAG
           docker system prune -f
