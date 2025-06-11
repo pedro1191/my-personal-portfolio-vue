@@ -35,7 +35,8 @@ export default {
   padding: 0;
   margin: 0;
   background-color: transparent;
-  max-width: 900px;
+  justify-content: center;
+  width: 100%;
 }
 
 .modal-container {
@@ -51,5 +52,11 @@ export default {
 .modal-header:empty,
 .modal-footer:empty {
   display: none;
+}
+
+.modal-content {
+  background-color: var(--background-color);
+  border-radius: var(--border-radius);
+  overflow: hidden;
 }
 </style>

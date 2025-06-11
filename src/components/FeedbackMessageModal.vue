@@ -1,11 +1,7 @@
 <template>
   <Backdrop @maskClick="emitClose">
     <ZoomAnimation>
-      <Modal
-        v-if="show"
-        :customContentStyle="customContentStyle"
-        @close="emitClose"
-      >
+      <Modal v-if="show" @close="emitClose">
         <template v-slot:body>
           <slot></slot>
         </template>
@@ -33,8 +29,5 @@ export default {
     ZoomAnimation,
   },
   mixins: [modalMixin],
-  props: {
-    customContentStyle: Object,
-  },
 };
 </script>

@@ -76,7 +76,9 @@ export default {
   left: 1rem;
   padding: 1rem;
   z-index: 100;
-  border: 1px solid var(--secondary);
+  border-width: var(--border-width);
+  border-color: var(--secondary);
+  border-style: solid;
   background-color: var(--background-color);
 }
 

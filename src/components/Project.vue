@@ -98,8 +98,16 @@ export default {
   gap: 0.5rem;
 }
 
-.project-links .btn:first-child {
+.project-links {
+  display: flex;
+  flex-wrap: wrap;
+  column-gap: 1rem;
+}
+
+.project-links .btn {
   padding-left: 0;
+  padding-right: 0;
+  white-space: nowrap;
 }
 
 .project-details .project-description p:last-child {

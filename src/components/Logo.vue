@@ -17,7 +17,9 @@ export default {
 
 <style scoped>
 .default {
-  border: 1px solid var(--secondary);
+  border-width: var(--border-width);
+  border-color: var(--secondary);
+  border-style: solid;
   background-color: var(--background-with-transparency);
   border-radius: 50%;
 }

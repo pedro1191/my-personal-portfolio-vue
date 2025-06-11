@@ -18,11 +18,18 @@ export default {
   src: url('./assets/fonts/Roboto-Regular.ttf');
 }
 
+html {
+  scrollbar-gutter: stable;
+}
+
+body {
+  color: var(--text-color);
+  background-color: var(--background-color);
+}
+
 #app {
   font-family: Roboto, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
 }
 </style>

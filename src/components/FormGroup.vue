@@ -78,7 +78,7 @@ export default {
 <style scoped>
 .label {
   margin: 0;
-  padding: 0 0 0 1rem;
+  padding: 0 0 0 0.5rem;
   color: #17a2b8;
   opacity: 0;
   top: 35px;

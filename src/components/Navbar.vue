@@ -144,11 +144,14 @@ export default {
 
 .navbar {
   background: var(--background-with-transparency);
-  height: var(--navbar-height);
+  border-width: var(--border-width);
+  border-color: var(--border-color);
+  border-style: solid;
 }
 
 .navbar .navbar-collapse {
   gap: 0.5rem;
+  background: var(--background-with-transparency);
 }
 
 .navbar-nav .nav-link {
@@ -160,10 +163,12 @@ export default {
 .navbar.navbar-shrink {
   padding-top: 0.5rem;
   padding-bottom: 0.5rem;
-  height: var(--navbar-height-mobile);
 }
 
-.app-logo,
+.app-logo {
+  height: 4rem;
+}
+
 .navbar-shrink .app-logo {
   height: 3rem;
   transition: height 0.25s;
@@ -173,15 +178,10 @@ export default {
   .navbar {
     padding-top: 1rem;
     padding-bottom: 1rem;
-    border-bottom: 1px solid var(--border-color);
   }
 
   .navbar-expand-md .navbar-nav {
     gap: 0.5rem;
-  }
-
-  .app-logo {
-    height: 4rem;
   }
 
   .navbar-nav .nav-link:hover,

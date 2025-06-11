@@ -70,7 +70,6 @@
 
     <FeedbackMessageModal
       v-if="this.modal.error || this.modal.success"
-      :customContentStyle="{ backgroundColor: '#fff' }"
       @close="onModalClose"
     >
       <p>

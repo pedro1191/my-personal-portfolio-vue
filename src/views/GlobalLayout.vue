@@ -45,7 +45,13 @@ export default {
 
 <style scoped>
 .router-view {
-  padding-top: var(--navbar-height);
+  padding-top: var(--navbar-height-mobile);
   flex: 1;
+}
+
+@media (min-width: 768px) {
+  .router-view {
+    padding-top: var(--navbar-height);
+  }
 }
 </style>
