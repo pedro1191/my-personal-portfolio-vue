@@ -38,7 +38,7 @@ export const PROJECT_LIST = [
     description:
       "<p>This is the application that you are currently in. It loads the portfolio's projects and sends contact messages.</p><p>Overall, it was built using the Vue.js and Laravel frameworks. Please refer to its source code link above for documentation and technical details.</p>",
     chips: ['Vue', 'JavaScript', 'HTML', 'CSS'],
-    image: '/img/projects/portfolio.jpeg',
+    image: '/img/projects/portfolio.png',
     live_demo_link: 'https://www.pedrohsalmeida.com',
     source_code_link: 'https://github.com/pedro1191/my-personal-portfolio-vue',
   },
