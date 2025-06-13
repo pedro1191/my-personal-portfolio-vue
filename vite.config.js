@@ -8,6 +8,7 @@ export default defineConfig({
   plugins: [
     vue(),
     VitePWA({
+      filename: 'service-worker.js',
       registerType: 'prompt',
       devOptions: {
         enabled: true,
