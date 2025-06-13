@@ -4,10 +4,7 @@
       :title="`Switch to ${inverseThemeEnum[theme]} theme`"
       @click="$emit('toggleTheme')"
     >
-      <font-awesome-icon
-        v-if="theme === themeEnum.Dark"
-        icon="fa-regular fa-sun"
-      />
+      <SunBright v-if="theme === themeEnum.Dark" />
       <font-awesome-icon
         v-if="theme === themeEnum.Light"
         icon="fa-regular fa-moon"
@@ -17,11 +14,15 @@
 </template>
 
 <script>
+import SunBright from '@/components/SunBright.vue';
 import { InverseTheme, Theme } from '@/constants';
 import { isValidTheme } from '@/helpers';
 
 export default {
   name: 'AppThemeToggle',
+  components: {
+    SunBright,
+  },
   props: {
     theme: {
       type: String,
@@ -61,5 +62,10 @@ export default {
 .theme-toggle button:focus-within {
   opacity: 1;
   background: hsl(0 0% 50% / 0.15);
+}
+
+.theme-toggle svg {
+  height: 16px;
+  fill: var(--text-color);
 }
 </style>
