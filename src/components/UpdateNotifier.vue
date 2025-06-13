@@ -1,10 +1,12 @@
 <template>
   <transition name="ease-in">
-    <div class="update-notifier" v-if="updateExists">
+    <div class="update-notifier d-flex flex-column" v-if="updateExists">
       <p>There is an update available!</p>
-      <button class="btn btn-info" @click="refreshApp" :disabled="refreshing">
-        Refresh
-      </button>
+      <div class="ml-auto">
+        <button class="btn btn-info" @click="refreshApp" :disabled="refreshing">
+          Refresh
+        </button>
+      </div>
     </div>
   </transition>
   <Spinner v-if="refreshing"></Spinner>
