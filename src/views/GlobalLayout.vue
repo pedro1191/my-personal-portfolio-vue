@@ -5,10 +5,12 @@
     <AppFooter />
   </div>
   <UpdateNotifier></UpdateNotifier>
+  <CursorHighlighter></CursorHighlighter>
 </template>
 
 <script>
 import AppFooter from '@/components/Footer.vue';
+import CursorHighlighter from '@/components/CursorHighlighter.vue';
 import Navbar from '@/components/Navbar.vue';
 import UpdateNotifier from '@/components/UpdateNotifier.vue';
 
@@ -17,6 +19,7 @@ export default {
   components: {
     Navbar,
     AppFooter,
+    CursorHighlighter,
     UpdateNotifier,
   },
   data() {

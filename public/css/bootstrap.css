@@ -54,6 +54,7 @@
   --secondary20: hsl(202, 67%, 74%, 20%);
   --accent: #2b3d50;
   --primary: #17a2b8;
+  --background-color-cursor: rgba(23, 162, 184, 0.075);
 }
 
 :root[data-theme='dark'] {
@@ -68,6 +69,7 @@
   --secondary20: hsl(202, 67%, 26%, 20%);
   --accent: #afc1d4;
   --primary: #45d2e8;
+  --background-color-cursor: rgba(69, 210, 232, 0.075);
 }
 
 *,
@@ -4270,6 +4272,7 @@ input[type="button"].btn-block {
 
 .navbar-toggler:hover, .navbar-toggler:focus {
   text-decoration: none;
+  outline: none;
 }
 
 .navbar-toggler-icon {
