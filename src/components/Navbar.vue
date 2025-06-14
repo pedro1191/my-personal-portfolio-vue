@@ -74,15 +74,11 @@ export default {
     return {
       scrollYPosition: null,
       openMenu: false,
-      scrollTimeout: null,
     };
   },
   computed: {
     scrollOnTop: function () {
-      return this.scrollYPosition <= 50;
-    },
-    viewportOffset: function () {
-      return 200;
+      return this.scrollYPosition <= 25;
     },
   },
   watch: {
@@ -98,40 +94,10 @@ export default {
   },
   methods: {
     onScroll() {
-      this.updateScroll();
-      clearTimeout(this.scrollTimeout);
-      this.scrollTimeout = setTimeout(() => this.updateNavLinkClass(), 125);
-    },
-    updateScroll() {
       this.scrollYPosition = window.scrollY;
-    },
-    updateNavLinkClass() {
-      this.navLinks.forEach((navLink) => {
-        const element = document.querySelector(
-          `[ href*="${navLink.link.hash}" ]`,
-        );
-
-        if (this.isInViewport(navLink.reference_id)) {
-          element.parentElement.classList.add('active');
-        } else {
-          element.parentElement.classList.remove('active');
-        }
-      });
     },
     onNavbarTogglerClick() {
       this.openMenu = !this.openMenu;
-    },
-    isInViewport(id) {
-      const element = document.getElementById(id);
-      const bounding = element.getBoundingClientRect();
-
-      return (
-        bounding.top <= this.viewportOffset &&
-        bounding.bottom >= this.viewportOffset &&
-        bounding.left >= 0 &&
-        bounding.right <=
-          (window.innerWidth || document.documentElement.clientWidth)
-      );
     },
   },
 };
@@ -147,11 +113,11 @@ export default {
   border-width: var(--border-width);
   border-color: var(--border-color);
   border-style: solid;
+  transition: all var(--transition-fast) ease-in-out;
 }
 
 .navbar .navbar-collapse {
   gap: 0.5rem;
-  background: var(--background-with-transparency);
 }
 
 .navbar-nav .nav-link {
@@ -167,11 +133,11 @@ export default {
 
 .app-logo {
   height: 4rem;
+  transition: all var(--transition-fast) ease-in-out;
 }
 
 .navbar-shrink .app-logo {
   height: 3rem;
-  transition: height 0.25s;
 }
 
 @media (min-width: 768px) {

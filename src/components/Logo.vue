@@ -20,7 +20,6 @@ export default {
   border-width: var(--border-width);
   border-color: var(--secondary);
   border-style: solid;
-  background-color: var(--background-with-transparency);
   border-radius: 50%;
 }
 </style>
