@@ -1,5 +1,6 @@
 import { describe, it, expect, vi, beforeEach, afterEach } from 'vitest';
 import { useCursorHighlighter } from '@/composables';
+import { withSetup } from '../test-utils';
 
 describe('useCursorHighlighter', () => {
   let addEventListenerSpy;
@@ -17,7 +18,7 @@ describe('useCursorHighlighter', () => {
     const eventType = 'mousemove';
 
     // ACT
-    useCursorHighlighter();
+    withSetup(() => useCursorHighlighter());
 
     // ASSERT
     expect(addEventListenerSpy).toHaveBeenCalledWith(
@@ -35,14 +36,14 @@ describe('useCursorHighlighter', () => {
     const expectedGradient = `radial-gradient(450px at 100px 200px, var(--background-color-cursor), transparent 80%)`;
 
     // ACT
-    const { styles } = useCursorHighlighter();
+    const [result] = withSetup(() => useCursorHighlighter());
     const listener = addEventListenerSpy.mock.calls.find(
       ([type]) => type === 'mousemove',
     )[1];
     listener(mockEvent);
 
     // ASSERT
-    expect(styles.value).toEqual({
+    expect(result.styles.value).toEqual({
       backgroundImage: expectedGradient,
     });
   });
