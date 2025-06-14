@@ -17,7 +17,7 @@ describe('GlobalLayout.vue', () => {
       .first()
       .within(() => {
         cy.contains('h1', 'Pedro de Almeida');
-        cy.contains('h2', 'Full-stack Web Developer');
+        cy.contains('h4', 'Full-stack Web Developer');
         cy.contains('h6', 'Based in Lisbon, Portugal');
       });
 
