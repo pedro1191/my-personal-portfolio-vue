@@ -18,9 +18,3 @@ export default {
   },
 };
 </script>
-
-<style scoped>
-h1 {
-  font-size: 3rem;
-}
-</style>

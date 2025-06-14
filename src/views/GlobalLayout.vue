@@ -57,4 +57,10 @@ export default {
     padding-top: var(--navbar-height);
   }
 }
+
+@media (min-width: 992px) {
+  .router-view {
+    padding-top: 0;
+  }
+}
 </style>

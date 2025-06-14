@@ -8,7 +8,7 @@
           >
             <div class="header">
               <AppTitle title="Pedro de Almeida" />
-              <h2 class="font-weight-light">Full-stack Web Developer</h2>
+              <h4 class="font-weight-light">Full-stack Web Developer</h4>
               <h6 class="mt-4">Based in Lisbon, Portugal</h6>
             </div>
             <SocialMedia :socialMedia="socialMedia" />
@@ -16,9 +16,14 @@
         </div>
       </div>
       <div class="col-lg-7">
-        <AppTitle id="portfolio" is-secondary title="Projects" />
+        <AppTitle
+          id="portfolio"
+          is-secondary
+          title="Projects"
+          class="anchor-offset"
+        />
         <Portfolio :projects="projects" />
-        <AppTitle id="about" is-secondary title="About" class="mt-5" />
+        <AppTitle id="about" is-secondary title="About" class="anchor-offset" />
         <div class="row">
           <div class="col">
             <p>
@@ -55,7 +60,12 @@
             </p>
           </div>
         </div>
-        <AppTitle id="contact" is-secondary title="Contact" class="mt-5" />
+        <AppTitle
+          id="contact"
+          is-secondary
+          title="Contact"
+          class="anchor-offset"
+        />
         <div class="row">
           <div class="col">
             <AppForm
@@ -322,5 +332,13 @@ export default {
   position: sticky;
   top: calc(var(--navbar-height) + 3rem);
   max-height: calc(100vh - var(--navbar-height) - 6rem);
+}
+
+.anchor-offset::before {
+  content: '';
+  display: block;
+  height: var(--navbar-height);
+  margin-top: -var(--navbar-height);
+  visibility: hidden;
 }
 </style>
