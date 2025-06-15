@@ -18,7 +18,7 @@
         </div>
         <div class="project-links">
           <a
-            class="btn btn-link"
+            class="btn-link"
             target="_blank"
             rel="noreferrer noopener"
             :href="project.live_demo_link"
@@ -28,7 +28,7 @@
             <font-awesome-icon icon="fa-eye" />
           </a>
           <a
-            class="btn btn-link"
+            class="btn-link"
             target="_blank"
             rel="noreferrer noopener"
             :href="project.source_code_link"
@@ -89,7 +89,7 @@ export default {
 }
 
 .project-details {
-  gap: 0.5rem;
+  gap: 1rem;
 }
 
 .project-chips {
@@ -104,13 +104,13 @@ export default {
   column-gap: 1rem;
 }
 
-.project-links .btn {
-  padding-left: 0;
-  padding-right: 0;
+.project-links .btn-link {
   white-space: nowrap;
 }
+</style>
 
+<style>
 .project-details .project-description p:last-child {
-  margin-bottom: 0.5rem;
+  margin-bottom: 0;
 }
 </style>

@@ -26,7 +26,7 @@ export const PROJECT_LIST = [
     id: 2,
     name: 'Pokémon Game',
     description:
-      '<p>This is a simple Pokémon game. The player can select two pokémons at a time and make them fight until there is only one pokémon left, which will be the champion. The pokémons are loaded from the open RESTful API <a href="https://pokeapi.co/docs/v2" target="_blank" rel="noreferrer noopener">PokéAPI</a>.</p><p>Overall, it was built using the Vue.js framework. Please refer to its source code link below for documentation and technical details.</p>',
+      '<p>This is a simple Pokémon game. The player can select two pokémons at a time and make them fight until there is only one pokémon left, which will be the champion. The pokémons are loaded from the open RESTful API <a class="btn-link" href="https://pokeapi.co/docs/v2" target="_blank" rel="noreferrer noopener">PokéAPI</a>.</p><p>Overall, it was built using the Vue.js framework. Please refer to its source code link below for documentation and technical details.</p>',
     image: '/img/projects/pokemon.png',
     chips: ['Vue', 'TypeScript', 'HTML', 'CSS'],
     live_demo_link: 'https://pokemongame.pedrohsalmeida.com',
