@@ -2,7 +2,7 @@
 
 Hello and welcome to my portfolio!
 
-This is a Progressive Web Application built using [Vue.js](https://vuejs.org/). It consumes a [REST API](https://github.com/pedro1191/my-personal-portfolio-rest) to load the portfolio's projects and send contact messages.
+This is a Progressive Web Application built using [Vue.js](https://vuejs.org/). It consumes a [REST API](https://github.com/pedro1191/my-personal-portfolio-rest) to send contact messages.
 
 The following technologies are being used:
 - [axios](https://github.com/axios/axios): to consume the [REST API](https://github.com/pedro1191/my-personal-portfolio-rest)
