@@ -49,7 +49,7 @@
                 {{ getSocialMediaTextPrefix(index) }}
                 <a
                   :href="sm.link"
-                  :class="sm.anchorClasses"
+                  class="btn-link"
                   target="_blank"
                   rel="noreferrer noopener"
                 >
@@ -60,6 +60,15 @@
             </p>
           </div>
         </div>
+        <a
+          class="btn-link"
+          target="_blank"
+          rel="noreferrer noopener"
+          href="files/resume.pdf"
+        >
+          <span class="mr-1">View full resume</span>
+          <font-awesome-icon icon="fa-arrow-up-right-from-square" />
+        </a>
         <AppTitle
           id="contact"
           is-secondary

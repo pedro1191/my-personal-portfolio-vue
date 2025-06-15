@@ -1,5 +1,6 @@
 import { createApp } from 'vue';
 import {
+  faArrowUpRightFromSquare,
   faBars,
   faCode,
   faEye,
@@ -15,7 +16,16 @@ import router from './router';
 import store from './store';
 import { configure } from 'vue-gtag';
 
-library.add(faBars, faCode, faEye, faGithub, faLinkedinIn, faMoon, faSpinner);
+library.add(
+  faArrowUpRightFromSquare,
+  faBars,
+  faCode,
+  faEye,
+  faGithub,
+  faLinkedinIn,
+  faMoon,
+  faSpinner,
+);
 
 configure({
   tagId: 'G-624GF25M5K',
