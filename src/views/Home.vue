@@ -64,7 +64,7 @@
           class="btn-link"
           target="_blank"
           rel="noreferrer noopener"
-          href="files/resume.pdf"
+          href="/files/resume.pdf"
         >
           <span class="mr-1">View full resume</span>
           <font-awesome-icon icon="fa-arrow-up-right-from-square" />
